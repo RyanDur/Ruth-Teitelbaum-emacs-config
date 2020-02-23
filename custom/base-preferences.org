@@ -32,7 +32,7 @@
 
 * Enabling the disabled
 
-*** upcase and downcase region
+** upcase and downcase region
 
     I like to be able to do this. I get lots of things that come in
     SHOUTING or that need to SHOUT.
@@ -42,7 +42,7 @@
       (put 'upcase-region 'disabled nil)
     #+END_SRC
 
-*** Narrowing the region to what I want to look at
+** Narrowing the region to what I want to look at
 
     This isn't needed quite so much now that searches, regexp and
     otherwise operate, sometimes annoyingly to an old timer like me, on
@@ -54,7 +54,7 @@
       (put 'narrow-to-region 'disabled nil)
     #+END_SRC
 
-* custom.el
+* Custom configuration location
 
    custom.el is great for configuring things through that "gui" in
    emacs, but it is a real pain when it drops junk in your [[../init.el][init.el]] and
@@ -81,27 +81,48 @@
        (load-theme 'sanityinc-tomorrow-bright t))
    #+END_SRC
 
+* Cursors
+  
+** [[https://www.emacswiki.org/emacs/NonBlinkingCursor][Show me where the cursor is]]
+  
+   #+BEGIN_SRC emacs-lisp
+   (blink-cursor-mode t)
+   #+END_SRC
+   
+   
+** [[https://www.emacswiki.org/emacs/DeleteSelectionMode][Deleteing a selection]]
+ 
+   #+BEGIN_SRC emacs-lisp
+   (delete-selection-mode t)
+   #+END_SRC
+
+** [[https://www.emacswiki.org/emacs/ShowParenMode][Show parens]]
+   
+   #+BEGIN_SRC emacs-lisp
+   (show-paren-mode t)
+   #+END_SRC
+
 * Bars, columns and lines
 
    I don't want a tool bar or a scroll bar ever and I don't want a
-   menu when I'm in a terminal window.  I do like the menu ot discover
+   menu when I'm in a terminal window.  I do like the menu to discover
    new things and keybindings when I'm using emacs as an X
    application.
 
    #+BEGIN_SRC emacs-lisp
-     ;; no toolbar
-     (tool-bar-mode -1)
+   ;; no toolbar
+   (tool-bar-mode -1)
 
-     ;; no menu in a terminal
-     (unless window-system
-       (menu-bar-mode -1))
+   ;; no menu in a terminal
+   (unless window-system
+     (menu-bar-mode -1))
 
-     ;; no scroll bar
-     ;;(scroll-bar-mode -1)
+   ;; no scroll bar
+   ;;(scroll-bar-mode -1)
 
-     ;; no horizontal scroll bar
-     (when (boundp 'horizontal-scroll-bar-mode)
-       (horizontal-scroll-bar-mode -1))
+   ;; no horizontal scroll bar
+   (when (boundp 'horizontal-scroll-bar-mode)
+     (horizontal-scroll-bar-mode -1))
    #+END_SRC
 
    I also like to have an idea of where I am in the file so I'd like

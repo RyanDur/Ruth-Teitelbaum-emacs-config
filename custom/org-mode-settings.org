@@ -1,6 +1,6 @@
 #+TITLE: Org mode settings  
 
-[[file:README.org][Back to main config]]
+[[file:../README.org][Back to main config]]
 
 * base
 

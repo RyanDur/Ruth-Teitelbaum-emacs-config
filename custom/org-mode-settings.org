@@ -11,6 +11,7 @@
     (setq org-log-done t)
 
     (setq org-agenda-files (list "~/org"))
+    (setq org-return-follows-link t)
     #+END_SRC
 
 * Babel

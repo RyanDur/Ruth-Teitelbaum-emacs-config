@@ -1,8 +1,15 @@
 #+TITLE: Main Configurations
 
+  When it comes to trying to learn new things, always steal from those
+  that made you learn the thing in the first place. When it comes to
+  emacs, I will steal what I can from my Brother. If you would like to
+  see the original, you can find it here [[https://github.com/otfrom/otfrom-org-emacs/blob/master/org/config.org][otfrom/otfrom-org-emacs]].
+
 * Helpers
-   There are a number of helper functions that we'll need through the
-   rest of this. We'll just define them up here.
+
+  He created a number of helper functions that we'll need through the
+  rest of this. They are incredibly useful, I recommend stealing these
+  regardless if you need anything in here or not.
 
 ** load-if-exists
 
@@ -43,8 +50,10 @@
   the :config key in use-package, but sometimes, I'm not smart enough
   to know how to do it.
 
-** We need diminish
-
+** We need [[https://github.com/emacsmirror/diminish][diminish]]
+   
+   abbreviate or hide all the minor modes.
+   
    #+BEGIN_SRC emacs-lisp
      (use-package diminish :ensure t)
    #+END_SRC

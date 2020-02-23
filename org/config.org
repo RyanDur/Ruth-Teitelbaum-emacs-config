@@ -11,12 +11,12 @@
    rolls, etc.
 
    #+BEGIN_SRC emacs-lisp
-   (defun load-if-exists (file)
-   (if (file-exists-p file)
-   (progn
-   (load file)
-   (message (format "Loading file: %s" file)))
-   (message (format "No %s file. So not loading one." file))))
+     (defun load-if-exists (file)
+       (if (file-exists-p file)
+	   (progn
+	     (load file)
+	     (message (format "Loading file: %s" file)))
+	 (message (format "No %s file. So not loading one." file))))
    #+END_SRC
 
 * Starting
@@ -29,7 +29,7 @@
 ** We need diminish
 
    #+BEGIN_SRC emacs-lisp
-   (use-package diminish :ensure t)
+     (use-package diminish :ensure t)
    #+END_SRC
 
 ** Backups
@@ -39,14 +39,14 @@
    littered around the system.
 
    #+BEGIN_SRC emacs-lisp
-   (setq
-   backup-by-copying t      ; don't clobber symlinks
-   backup-directory-alist
-   '(("." . "~/.saves"))    ; don't litter my fs tree
-   delete-old-versions t
-   kept-new-versions 6
-   kept-old-versions 2
-   version-control t)       ; use versioned backups
+     (setq
+      backup-by-copying t      ; don't clobber symlinks
+      backup-directory-alist
+      '(("." . "~/.saves"))    ; don't litter my fs tree
+      delete-old-versions t
+      kept-new-versions 6
+      kept-old-versions 2
+      version-control t)       ; use versioned backups
    #+END_SRC
 
 ** Enabling the disabled
@@ -57,8 +57,8 @@
     SHOUTING or that need to SHOUT.
 
     #+BEGIN_SRC emacs-lisp
-    (put 'downcase-region 'disabled nil)
-    (put 'upcase-region 'disabled nil)
+      (put 'downcase-region 'disabled nil)
+      (put 'upcase-region 'disabled nil)
     #+END_SRC
 
 *** Narrowing the region to what I want to look at
@@ -70,7 +70,7 @@
     tool in emacs is quite so region oriented.
 
     #+BEGIN_SRC emacs-lisp
-    (put 'narrow-to-region 'disabled nil)
+      (put 'narrow-to-region 'disabled nil)
     #+END_SRC
 
 ** custom.el
@@ -89,10 +89,10 @@
 ** basic setup
   
     #+BEGIN_SRC emacs-lisp
-    (global-set-key (kbd "C-c l") 'org-store-link)   
-    (global-set-key (kbd "C-c a") 'org-agenda)
-    (global-set-key (kbd "C-c c") 'org-capture)
-    (setq org-log-done t)
+      (global-set-key (kbd "C-c l") 'org-store-link)   
+      (global-set-key (kbd "C-c a") 'org-agenda)
+      (global-set-key (kbd "C-c c") 'org-capture)
+      (setq org-log-done t)
 
-    (setq org-agenda-files (list "~/org"))
+      (setq org-agenda-files (list "~/org"))
     #+END_SRC

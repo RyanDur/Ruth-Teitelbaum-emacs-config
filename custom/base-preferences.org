@@ -201,3 +201,16 @@
     (set (make-local-variable 'truncate-lines) nil))
   (add-hook 'ido-minibuffer-setup-hook 'ido-disable-line-trucation)
   #+END_SRC
+* Whitespace
+  
+  indicate empty lines
+
+  #+BEGIN_SRC emacs-lisp
+  (setq-default indicate-empty-lines t)
+  #+END_SRC
+
+  delete trailing whitespace on save
+
+  #+BEGIN_SRC emacs-lisp
+  (add-hook 'before-save-hook 'delete-trailing-whitespace)
+  #+END_SRC

@@ -19,6 +19,21 @@
        (message (format "No %s file. So not loading one." file))))
    #+END_SRC
 
+** org-load-if-exists
+
+   look at me adding my own helper. I want to use Babel to load other
+   files into my configuration. You won't find this in the original
+   repo.
+
+   #+BEGIN_SRC emacs-lisp
+   (defun org-babel-load-if-exists (file)
+     (if (file-exists-p (concat user-emacs-directory file))
+	 (progn
+	   (org-babel-load-file (concat user-emacs-directory file))
+	   (message (format "Loading file: %s" file)))
+       (message (format "No %s file. So not loading one." file))))
+   #+END_SRC
+
 * Starting
 
   There are some variables we'll really want to set up before
@@ -86,30 +101,8 @@
      (load-if-exists custom-file)
    #+END_SRC
 
-** org mode settings
-  
-    #+BEGIN_SRC emacs-lisp
-    (global-set-key (kbd "C-c l") 'org-store-link)   
-    (global-set-key (kbd "C-c a") 'org-agenda)
-    (global-set-key (kbd "C-c c") 'org-capture)
-    (setq org-log-done t)
+** [[file:~/.emacs.d/custom/org-mode-settings.org::*Org%20mode%20settings][Org mode settings]]
 
-    (setq org-agenda-files (list "~/org"))
-    #+END_SRC
-
-*** Babel
-   Found these on the "[[https://explog.in/dot/emacs/config.html][A literate emacs configuration]]" page
-
-**** Better source code window editing
-     
-     #+BEGIN_SRC emacs-lisp
-     (setq org-src-window-setup 'other-window)
-     #+END_SRC
-
-**** Highlight and indent source code blocks
-
-     #+BEGIN_SRC emacs-lisp
-     (setq org-src-fontify-natively t)
-     (setq org-src-tab-acts-natively t)
-     (setq org-edit-src-content-indentation 0)
-     #+END_SRC
+   #+BEGIN_SRC emacs-lisp
+   (org-babel-load-if-exists "custom/org-mode-settings.org")
+   #+END_SRC

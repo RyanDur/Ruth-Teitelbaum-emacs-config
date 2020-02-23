@@ -108,6 +108,12 @@
    (show-paren-mode t)
    #+END_SRC
 
+** indent automatically on a new line
+   
+   #+BEGIN_SRC emacs-lisp
+   (define-key global-map (kbd "RET") 'newline-and-indent)
+   #+END_SRC
+
 * Bars, columns and lines
 
    I don't want a tool bar or a scroll bar ever and I don't want a
@@ -180,4 +186,18 @@
 	    (if this-win-2nd (other-window 1))))))
 
   (global-set-key (kbd "C-x t") 'toggle-window-split)
+  #+END_SRC
+* displaying the file buffer
+
+  I like the file buffer to display vertically and auto complete for me.
+
+  #+BEGIN_SRC emacs-lisp
+  (ido-mode t)
+  (setq ido-decorations
+	(quote
+	 ("\n-> " "" "\n   " "\n   ..." "[" "]" " [No match]" " [Matched]"
+	  " [Not readable]" " [Too big]" " [Confirm]")))
+  (defun ido-disable-line-trucation ()
+    (set (make-local-variable 'truncate-lines) nil))
+  (add-hook 'ido-minibuffer-setup-hook 'ido-disable-line-trucation)
   #+END_SRC

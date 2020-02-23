@@ -1,5 +1,7 @@
 #+TITLE: Base Preferences
 
+[[file:../README.org][Back to main config]]
+
 * We need [[https://github.com/emacsmirror/diminish][diminish]]
    
    abbreviate or hide all the minor modes.

@@ -101,8 +101,8 @@
      (load-if-exists custom-file)
    #+END_SRC
 
-** [[file:~/.emacs.d/custom/org-mode-settings.org::*Org%20mode%20settings][Org mode settings]]
-
+** [[file:custom/org-mode-settings.org][Org mode settings]]
+   
    #+BEGIN_SRC emacs-lisp
    (org-babel-load-if-exists "custom/org-mode-settings.org")
    #+END_SRC

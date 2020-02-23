@@ -1,5 +1,7 @@
-#+TITLE: Org mode settings
-  
+#+TITLE: Org mode settings  
+
+* base
+
     #+BEGIN_SRC emacs-lisp
     (global-set-key (kbd "C-c l") 'org-store-link)   
     (global-set-key (kbd "C-c a") 'org-agenda)
@@ -25,3 +27,4 @@
      (setq org-src-tab-acts-natively t)
      (setq org-edit-src-content-indentation 0)
      #+END_SRC
+

@@ -1,3 +1,5 @@
+#+TITLE: Main Configurations
+
 * Helpers
    There are a number of helper functions that we'll need through the
    rest of this. We'll just define them up here.

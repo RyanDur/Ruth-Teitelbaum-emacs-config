@@ -45,12 +45,7 @@
 
 * Configuration
 
-  There are some variables we'll really want to set up before
-  everything gets kicked off. Usually we'd want to do this by using
-  the :config key in use-package, but sometimes, I'm not smart enough
-  to know how to do it.
-
-** [[file:custom/base-preferences.org][Base prefeerences]]
+** [[file:custom/base-preferences.org][Base preferences]]
 
    #+BEGIN_SRC emacs-lisp
    (org-babel-load-if-exists "custom/base-preferences.org")

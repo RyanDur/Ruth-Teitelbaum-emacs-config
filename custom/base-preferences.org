@@ -3,8 +3,11 @@
 [[file:../README.org][Back to main config]]
 
 * We need [[https://github.com/emacsmirror/diminish][diminish]]
-   
-   abbreviate or hide all the minor modes.
+
+   There are some variables we'll really want to set up before
+   everything gets kicked off. Usually we'd want to do this by using
+   the :config key in use-package, but sometimes, I'm not smart enough
+   to know how to do it. Abbreviate or hide all the minor modes.
    
    #+BEGIN_SRC emacs-lisp
      (use-package diminish :ensure t)

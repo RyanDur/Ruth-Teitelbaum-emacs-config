@@ -56,3 +56,9 @@
    #+BEGIN_SRC emacs-lisp
    (org-babel-load-if-exists "custom/org-mode-settings.org")
    #+END_SRC
+
+** File tree
+
+   #+BEGIN_SRC emacs-lisp
+   (org-babel-load-if-exists "custom/tree.org")
+   #+END_SRC

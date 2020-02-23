@@ -2,6 +2,12 @@
 
 [[file:../README.org][Back to main config]]
 
+* [[https://www.emacswiki.org/emacs/YesOrNoP][Don't question me]]
+
+  #+BEGIN_SRC emacs-lisp
+  (fset 'yes-or-no-p 'y-or-n-p)
+  #+END_SRC
+
 * We need [[https://github.com/emacsmirror/diminish][diminish]]
 
    There are some variables we'll really want to set up before

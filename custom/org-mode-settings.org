@@ -27,6 +27,9 @@
   (setq org-return-follows-link t)
   #+END_SRC
 
+  #+BEGIN_SRC emacs-lisp
+  (org-defkey org-mode-map (kbd "C-c b") 'org-insert-todo-heading)
+  #+END_SRC
 * Babel
   Found these on the "[[https://explog.in/dot/emacs/config.html][A literate emacs configuration]]" page
 

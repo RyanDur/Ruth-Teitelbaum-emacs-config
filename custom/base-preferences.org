@@ -303,3 +303,8 @@
   #+BEGIN_SRC emacs-lisp
   (global-set-key (kbd "C-c s") 'flyspell-correct-word-before-point)
   #+END_SRC
+* [[https://github.com/jaypei/emacs-neotree][File tree]]
+
+   #+BEGIN_SRC emacs-lisp
+   (org-babel-load-if-exists "custom/tree.org")
+   #+END_SRC

@@ -1,9 +1,9 @@
 #+TITLE: Main Configurations
 
-  When it comes to trying to learn new things, always steal from those
-  that made you learn the thing in the first place. When it comes to
-  emacs, I will steal what I can from my Brother. If you would like to
-  see the original, you can find it here [[https://github.com/otfrom/otfrom-org-emacs/blob/master/org/config.org][otfrom/otfrom-org-emacs]].
+When it comes to trying to learn new things, always steal from those
+that made you learn the thing in the first place. When it comes to
+emacs, I will steal what I can from my Brother. If you would like to
+see the original, you can find it here [[https://github.com/otfrom/otfrom-org-emacs/blob/master/org/config.org][otfrom/otfrom-org-emacs]].
 
 * Helpers
 

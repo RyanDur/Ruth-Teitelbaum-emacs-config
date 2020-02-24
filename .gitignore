@@ -5,3 +5,5 @@ org/**/*.el
 custom/**/*.el
 README.el
 ido*
+\#*
+.\#*

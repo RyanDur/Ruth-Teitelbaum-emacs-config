@@ -228,18 +228,30 @@
 
   #+BEGIN_SRC emacs-lisp
   (unless (package-installed-p 'auto-complete)
-  (package-install 'auto-complete))
+    (package-install 'auto-complete))
   (require 'auto-complete)
   (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
 
   (setq ac-ignore-case nil)
   #+END_SRC
 
-* Spell checking
+* [[https://www.emacswiki.org/emacs/FlySpell#toc7][Spell checking]]
+
+  Setup fly spell
 
   #+BEGIN_SRC emacs-lisp
   (require 'flyspell)
+  (add-hook 'text-mode-hook 'flyspell-mode)
+  #+END_SRC
+
+  For performance concerns, setting 'flyspell-issue-message-flag' to nil will stop fly spell from
+  printing message for every word when checking the entire buffer which can cause an enormous slowdown.
+  #+BEGIN_SRC emacs-lisp
   (setq flyspell-issue-message-flg nil)
+  #+END_SRC
+
+  I like having a pop-up with spelling suggestions.
+  #+BEGIN_SRC emacs-lisp
   (defun flyspell-emacs-popup-textual (event poss word)
     "A textual flyspell popup menu."
     (require 'popup)
@@ -273,5 +285,21 @@
   (eval-after-load "flyspell"
     '(progn
        (fset 'flyspell-emacs-popup 'flyspell-emacs-popup-textual)))
-  (ac-flyspell-workaround)
+  #+END_SRC
+
+  I also want it to work no matter what mode emacs is in (i.e. GUI or terminal)
+  #+BEGIN_SRC emacs-lisp
+  (defun flyspell-emacs-popup-choose (org-fun event poss word)
+    (if (window-system)
+	(funcall org-fun event poss word)
+      (flyspell-emacs-popup-textual event poss word)))
+
+  (eval-after-load "flyspell"
+    '(progn
+       (advice-add 'flyspell-emacs-popup :around #'flyspell-emacs-popup-choose)))
+  #+END_SRC
+
+  Finally I want simple ways to invoke it.
+  #+BEGIN_SRC emacs-lisp
+  (global-set-key (kbd "C-c s") 'flyspell-correct-word-before-point)
   #+END_SRC

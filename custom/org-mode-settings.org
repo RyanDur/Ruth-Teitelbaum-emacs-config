@@ -4,29 +4,42 @@
 
 * base
 
-    #+BEGIN_SRC emacs-lisp
-    (global-set-key (kbd "C-c l") 'org-store-link)
-    (global-set-key (kbd "C-c a") 'org-agenda)
-    (global-set-key (kbd "C-c c") 'org-capture)
-    (setq org-log-done t)
+  [[https://alhassy.github.io/init/][Base setup from _Life within Org-mode_]]
+  /Let's obtain Org-mode along with the extras that allow us to ignore
+  heading names, but still utilise their contents –e.g., such as a
+  heading named ‘preamble’ that contains org-mode setup for a file./
 
-    (setq org-agenda-files (list "~/org"))
-    (setq org-return-follows-link t)
-    #+END_SRC
+  #+BEGIN_SRC emacs-lisp
+  (use-package org
+    :ensure org-plus-contrib
+    :config
+    (require 'ox-extra)
+    (ox-extras-activate '(ignore-headlines)))
+  #+END_SRC
+
+  #+BEGIN_SRC emacs-lisp
+  (global-set-key (kbd "C-c l") 'org-store-link)
+  (global-set-key (kbd "C-c a") 'org-agenda)
+  (global-set-key (kbd "C-c c") 'org-capture)
+  (setq org-log-done t)
+
+  (setq org-agenda-files (list "~/org"))
+  (setq org-return-follows-link t)
+  #+END_SRC
 
 * Babel
-   Found these on the "[[https://explog.in/dot/emacs/config.html][A literate emacs configuration]]" page
+  Found these on the "[[https://explog.in/dot/emacs/config.html][A literate emacs configuration]]" page
 
 ** Better source code window editing
 
-     #+BEGIN_SRC emacs-lisp
-     (setq org-src-window-setup 'other-window)
-     #+END_SRC
+   #+BEGIN_SRC emacs-lisp
+   (setq org-src-window-setup 'other-window)
+   #+END_SRC
 
 ** Highlight and indent source code blocks
 
-     #+BEGIN_SRC emacs-lisp
-     (setq org-src-fontify-natively t)
-     (setq org-src-tab-acts-natively t)
-     (setq org-edit-src-content-indentation 0)
-     #+END_SRC
+   #+BEGIN_SRC emacs-lisp
+   (setq org-src-fontify-natively t)
+   (setq org-src-tab-acts-natively t)
+   (setq org-edit-src-content-indentation 0)
+   #+END_SRC

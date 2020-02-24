@@ -73,19 +73,25 @@
   (load-if-exists custom-file)
   #+END_SRC
 
-* Colours
+* Colors
 
   It seems trivial, but it is one of the first things I do after I
   get the basics up and running. I like to get my colours and other
   basic window chrome and geegaws right.
 
-  #+BEGIN_SRC emacs-lisp
-  (use-package color-theme-sanityinc-tomorrow
-    :ensure t
-    :load-path "themes"
-    :config
-    (load-theme 'sanityinc-tomorrow-bright t))
-  #+END_SRC
+** [[https://github.com/purcell/color-theme-sanityinc-tomorrow][Color Theme Sanityinc Tomorrow]]
+   #+BEGIN_SRC emacs-lisp
+   (use-package color-theme-sanityinc-tomorrow
+     :ensure t
+     :config (color-theme-sanityinc-tomorrow-bright))
+   #+END_SRC
+
+** [[https://github.com/milkypostman/powerline][Powerline]]
+   #+BEGIN_SRC emacs-lisp
+   (use-package powerline
+     :ensure t
+     :config (powerline-default-theme))
+   #+END_SRC
 
 * Cursors
 
@@ -237,74 +243,80 @@
 
 * [[https://www.emacswiki.org/emacs/FlySpell#toc7][Spell checking]]
 
-  Setup fly spell
-
-  #+BEGIN_SRC emacs-lisp
-  (require 'flyspell)
-  (add-hook 'text-mode-hook 'flyspell-mode)
-  #+END_SRC
-
-  For performance concerns, setting 'flyspell-issue-message-flag' to nil will stop fly spell from
-  printing message for every word when checking the entire buffer which can cause an enormous slowdown.
-  #+BEGIN_SRC emacs-lisp
-  (setq flyspell-issue-message-flg nil)
-  #+END_SRC
-
-  I like having a pop-up with spelling suggestions.
-  #+BEGIN_SRC emacs-lisp
-  (defun flyspell-emacs-popup-textual (event poss word)
-    "A textual flyspell popup menu."
-    (require 'popup)
-    (let* ((corrects (if flyspell-sort-corrections
-			 (sort (car (cdr (cdr poss))) 'string<)
-		       (car (cdr (cdr poss)))))
-	   (cor-menu (if (consp corrects)
-			 (mapcar (lambda (correct)
-				   (list correct correct))
-				 corrects)
-		       '()))
-	   (affix (car (cdr (cdr (cdr poss)))))
-	   show-affix-info
-	   (base-menu  (let ((save (if (and (consp affix) show-affix-info)
-				       (list
-					(list (concat "Save affix: " (car affix))
-					      'save)
-					'("Accept (session)" session)
-					'("Accept (buffer)" buffer))
-				     '(("Save word" save)
-				       ("Accept (session)" session)
-				       ("Accept (buffer)" buffer)))))
-			 (if (consp cor-menu)
-			     (append cor-menu (cons "" save))
-			   save)))
-	   (menu (mapcar
-		  (lambda (arg) (if (consp arg) (car arg) arg))
-		  base-menu)))
-      (cadr (assoc (popup-menu* menu :scroll-bar t) base-menu))))
-
-  (eval-after-load "flyspell"
-    '(progn
-       (fset 'flyspell-emacs-popup 'flyspell-emacs-popup-textual)))
-  #+END_SRC
-
-  I also want it to work no matter what mode emacs is in (i.e. GUI or terminal)
-  #+BEGIN_SRC emacs-lisp
-  (defun flyspell-emacs-popup-choose (org-fun event poss word)
-    (if (window-system)
-	(funcall org-fun event poss word)
-      (flyspell-emacs-popup-textual event poss word)))
-
-  (eval-after-load "flyspell"
-    '(progn
-       (advice-add 'flyspell-emacs-popup :around #'flyspell-emacs-popup-choose)))
-  #+END_SRC
-
-  Finally I want simple ways to invoke it.
-  #+BEGIN_SRC emacs-lisp
-  (global-set-key (kbd "C-c s") 'flyspell-correct-word-before-point)
-  #+END_SRC
-* [[https://github.com/jaypei/emacs-neotree][File tree]]
+** Setup fly spell
 
    #+BEGIN_SRC emacs-lisp
-   (org-babel-load-if-exists "custom/tree.org")
+   (require 'flyspell)
+   (add-hook 'text-mode-hook 'flyspell-mode)
    #+END_SRC
+
+** Performance
+
+   Setting 'flyspell-issue-message-flag' to nil will stop fly spell from
+   printing message for every word when checking the entire buffer which can cause an enormous slowdown.
+
+   #+BEGIN_SRC emacs-lisp
+   (setq flyspell-issue-message-flg nil)
+   #+END_SRC
+
+** I like having a pop-up with spelling suggestions.
+   #+BEGIN_SRC emacs-lisp
+   (defun flyspell-emacs-popup-textual (event poss word)
+     "A textual flyspell popup menu."
+     (require 'popup)
+     (let* ((corrects (if flyspell-sort-corrections
+			  (sort (car (cdr (cdr poss))) 'string<)
+			(car (cdr (cdr poss)))))
+	    (cor-menu (if (consp corrects)
+			  (mapcar (lambda (correct)
+				    (list correct correct))
+				  corrects)
+			'()))
+	    (affix (car (cdr (cdr (cdr poss)))))
+	    show-affix-info
+	    (base-menu  (let ((save (if (and (consp affix) show-affix-info)
+					(list
+					 (list (concat "Save affix: " (car affix))
+					       'save)
+					 '("Accept (session)" session)
+					 '("Accept (buffer)" buffer))
+				      '(("Save word" save)
+					("Accept (session)" session)
+					("Accept (buffer)" buffer)))))
+			  (if (consp cor-menu)
+			      (append cor-menu (cons "" save))
+			    save)))
+	    (menu (mapcar
+		   (lambda (arg) (if (consp arg) (car arg) arg))
+		   base-menu)))
+       (cadr (assoc (popup-menu* menu :scroll-bar t) base-menu))))
+
+   (eval-after-load "flyspell"
+     '(progn
+	(fset 'flyspell-emacs-popup 'flyspell-emacs-popup-textual)))
+   #+END_SRC
+
+** I also want it to work no matter what mode emacs is in (i.e. GUI or terminal)
+
+   #+BEGIN_SRC emacs-lisp
+   (defun flyspell-emacs-popup-choose (org-fun event poss word)
+     (if (window-system)
+	 (funcall org-fun event poss word)
+       (flyspell-emacs-popup-textual event poss word)))
+
+   (eval-after-load "flyspell"
+     '(progn
+	(advice-add 'flyspell-emacs-popup :around #'flyspell-emacs-popup-choose)))
+   #+END_SRC
+
+** Finally I want simple ways to invoke it.
+
+   #+BEGIN_SRC emacs-lisp
+   (global-set-key (kbd "C-c s") 'flyspell-correct-word-before-point)
+   #+END_SRC
+
+* [[https://github.com/jaypei/emacs-neotree][File tree]]
+
+  #+BEGIN_SRC emacs-lisp
+  (org-babel-load-if-exists "custom/tree.org")
+  #+END_SRC

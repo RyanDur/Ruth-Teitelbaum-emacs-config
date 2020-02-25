@@ -29,7 +29,7 @@
   (setq
    backup-by-copying t      ; don't clobber symlinks
    backup-directory-alist
-   '(("." . "~/.saves"))    ; don't litter my fs tree
+   '(("." . "~/.emacs.d/.saves"))    ; don't litter my fs tree
    delete-old-versions t
    kept-new-versions 6
    kept-old-versions 2
@@ -161,9 +161,11 @@
   (setq inhibit-startup-screen t)
   (setq initial-scratch-message ";; scratch buffer created -- happy hacking\n")
   #+END_SRC
+
 * [[https://www.emacswiki.org/emacs/ToggleWindowSplit][Toggle window split]]
 
-  I like to be able to toggle the vertical or horizontal position of the window
+  I like to be able to toggle the vertical or horizontal position
+  of the window
 
   #+BEGIN_SRC emacs-lisp
   (defun toggle-window-split ()
@@ -195,14 +197,24 @@
   #+END_SRC
 * displaying the file buffer
 
-  I like the file buffer to display vertically and auto complete for me.
+  I like the file buffer to display vertically and auto complete for
+  me.
 
   #+BEGIN_SRC emacs-lisp
   (ido-mode t)
   (setq ido-decorations
 	(quote
-	 ("\n-> " "" "\n   " "\n   ..." "[" "]" " [No match]" " [Matched]"
-	  " [Not readable]" " [Too big]" " [Confirm]")))
+	 ("\n-> "
+	  ""
+	  "\n   "
+	  "\n   ..."
+	  "["
+	  "]"
+	  " [No match]"
+	  " [Matched]"
+	  " [Not readable]"
+	  " [Too big]"
+	  " [Confirm]")))
   (defun ido-disable-line-trucation ()
     (set (make-local-variable 'truncate-lines) nil))
   (add-hook 'ido-minibuffer-setup-hook 'ido-disable-line-trucation)
@@ -230,33 +242,22 @@
 
   (global-set-key (kbd "C-c i") 'indent-buffer)
   #+END_SRC
-* Auto Complete
-
-  #+BEGIN_SRC emacs-lisp
-  (unless (package-installed-p 'auto-complete)
-    (package-install 'auto-complete))
-  (require 'auto-complete)
-  (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
-
-  (setq ac-ignore-case nil)
-  #+END_SRC
-
 * [[https://www.emacswiki.org/emacs/FlySpell#toc7][Spell checking]]
 
 ** Setup fly spell
 
-   #+BEGIN_SRC emacs-lisp
-   (require 'flyspell)
-   (add-hook 'text-mode-hook 'flyspell-mode)
-   #+END_SRC
-
-** Performance
-
-   Setting 'flyspell-issue-message-flag' to nil will stop fly spell from
-   printing message for every word when checking the entire buffer which can cause an enormous slowdown.
+   I want to make sure that whenever i am in text mode that my
+   spelling is correct. Setting 'flyspell-issue-message-flag' to
+   nil will stop fly spell from printing message for every word
+   when checking the entire buffer which can cause an enormous
+   slowdown.
 
    #+BEGIN_SRC emacs-lisp
-   (setq flyspell-issue-message-flg nil)
+   (use-package flyspell
+     :ensure t
+     :config
+     (add-hook 'text-mode-hook 'flyspell-mode)
+     (setq flyspell-issue-message-flg nil))
    #+END_SRC
 
 ** I like having a pop-up with spelling suggestions.
@@ -274,18 +275,20 @@
 			'()))
 	    (affix (car (cdr (cdr (cdr poss)))))
 	    show-affix-info
-	    (base-menu  (let ((save (if (and (consp affix) show-affix-info)
-					(list
-					 (list (concat "Save affix: " (car affix))
-					       'save)
-					 '("Accept (session)" session)
-					 '("Accept (buffer)" buffer))
-				      '(("Save word" save)
-					("Accept (session)" session)
-					("Accept (buffer)" buffer)))))
-			  (if (consp cor-menu)
-			      (append cor-menu (cons "" save))
-			    save)))
+	    (base-menu
+	     (let ((save
+		    (if (and (consp affix) show-affix-info)
+			(list
+			 (list (concat "Save affix: " (car affix))
+			       'save)
+			 '("Accept (session)" session)
+			 '("Accept (buffer)" buffer))
+		      '(("Save word" save)
+			("Accept (session)" session)
+			("Accept (buffer)" buffer)))))
+	       (if (consp cor-menu)
+		   (append cor-menu (cons "" save))
+		 save)))
 	    (menu (mapcar
 		   (lambda (arg) (if (consp arg) (car arg) arg))
 		   base-menu)))
@@ -306,7 +309,8 @@
 
    (eval-after-load "flyspell"
      '(progn
-	(advice-add 'flyspell-emacs-popup :around #'flyspell-emacs-popup-choose)))
+	(advice-add 'flyspell-emacs-popup
+		    :around #'flyspell-emacs-popup-choose)))
    #+END_SRC
 
 ** Finally I want simple ways to invoke it.

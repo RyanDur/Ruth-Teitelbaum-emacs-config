@@ -9,40 +9,33 @@
   heading names, but still utilise their contents –e.g., such as a
   heading named ‘preamble’ that contains org-mode setup for a file./
 
+  Found some of these on the "[[https://explog.in/dot/emacs/config.html][A literate emacs configuration]]" page
+
   #+BEGIN_SRC emacs-lisp
   (use-package org
+    :pin org
     :ensure org-plus-contrib
     :config
     (require 'ox-extra)
-    (ox-extras-activate '(ignore-headlines)))
+    (ox-extras-activate '(ignore-headlines))
+
+    (global-set-key (kbd "C-c l") 'org-store-link)
+    (global-set-key (kbd "C-c a") 'org-agenda)
+    (global-set-key (kbd "C-c c") 'org-capture)
+
+    (setq org-log-done t)
+
+    (setq org-agenda-files (list "~/org"))
+    (setq org-return-follows-link t)
+
+    ;; M-S-RET not working in the terminal
+    (org-defkey org-mode-map (kbd "C-c b") 'org-insert-todo-heading)
+
+    ;; Better source code window editing
+    (setq org-src-window-setup 'other-window)
+
+    ;; Highlight and indent source code blocks
+    (setq org-src-fontify-natively t)
+    (setq org-src-tab-acts-natively t)
+    (setq org-edit-src-content-indentation 0))
   #+END_SRC
-
-  #+BEGIN_SRC emacs-lisp
-  (global-set-key (kbd "C-c l") 'org-store-link)
-  (global-set-key (kbd "C-c a") 'org-agenda)
-  (global-set-key (kbd "C-c c") 'org-capture)
-  (setq org-log-done t)
-
-  (setq org-agenda-files (list "~/org"))
-  (setq org-return-follows-link t)
-  #+END_SRC
-
-  #+BEGIN_SRC emacs-lisp
-  (org-defkey org-mode-map (kbd "C-c b") 'org-insert-todo-heading)
-  #+END_SRC
-* Babel
-  Found these on the "[[https://explog.in/dot/emacs/config.html][A literate emacs configuration]]" page
-
-** Better source code window editing
-
-   #+BEGIN_SRC emacs-lisp
-   (setq org-src-window-setup 'other-window)
-   #+END_SRC
-
-** Highlight and indent source code blocks
-
-   #+BEGIN_SRC emacs-lisp
-   (setq org-src-fontify-natively t)
-   (setq org-src-tab-acts-natively t)
-   (setq org-edit-src-content-indentation 0)
-   #+END_SRC

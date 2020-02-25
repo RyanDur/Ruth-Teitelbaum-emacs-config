@@ -17,9 +17,4 @@
 (defvar use-package-verbose t)
 (require 'bind-key)
 
-;; org-mode always needs to be installed in an emacs where it isn't loaded.
-(use-package org
-  :pin org
-  :ensure t)
-
 (org-babel-load-file (concat user-emacs-directory "README.org"))

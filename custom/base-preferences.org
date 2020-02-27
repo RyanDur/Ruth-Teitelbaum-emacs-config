@@ -1,6 +1,6 @@
 #+TITLE: Base Preferences
 
-[[file:../README.org][Back to main config]]
+[[https://github.com/RyanDur/Ruth-Teitelbaum-emacs-config][Back to main config]]
 
 * [[https://www.emacswiki.org/emacs/YesOrNoP][Don't question me]]
 

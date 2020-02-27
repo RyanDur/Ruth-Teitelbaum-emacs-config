@@ -45,13 +45,13 @@ see the original, you can find it here [[https://github.com/otfrom/otfrom-org-em
 
 * Configuration
 
-** [[file:custom/base-preferences.org][Base preferences]]
+** [[https://github.com/RyanDur/Ruth-Teitelbaum-emacs-config/blob/master/custom/base-preferences.org#L1][Base preferences]]
 
    #+BEGIN_SRC emacs-lisp
    (org-babel-load-if-exists "custom/base-preferences.org")
    #+END_SRC
 
-** [[file:custom/org-mode-settings.org][Org mode settings]]
+** [[https://github.com/RyanDur/Ruth-Teitelbaum-emacs-config/blob/master/custom/org-mode-settings.org#L1][Org mode settings]]
 
    #+BEGIN_SRC emacs-lisp
    (org-babel-load-if-exists "custom/org-mode-settings.org")

@@ -32,5 +32,11 @@
    I would like to see the last commit for a line in a pop-up
    #+BEGIN_SRC emacs-lisp
    (use-package git-messenger
-     :ensure t)
+     :ensure t
+     :config
+     (global-set-key (kbd "C-x v p") 'git-messenger:popup-message)
+     (define-key git-messenger-map (kbd "m") 'git-messenger:copy-message)
+
+     ;; Use magit-show-commit for showing status/diff commands
+     (custom-set-variables '(git-messenger:use-magit-popup t)))
    #+END_SRC

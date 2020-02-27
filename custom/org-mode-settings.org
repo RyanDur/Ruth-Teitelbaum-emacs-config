@@ -1,6 +1,6 @@
 #+TITLE: Org mode settings
 
-[[file:../README.org][Back to main config]]
+[[https://github.com/RyanDur/Ruth-Teitelbaum-emacs-config][Back to main config]]
 
 * [[https://alhassy.github.io/init/][Base setup]]
 

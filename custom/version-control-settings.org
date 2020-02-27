@@ -1,6 +1,6 @@
 * Version Control
 
-[[https://github.com/RyanDur/Ruth-Teitelbaum-emacs-config][Back to main config]]
+  [[https://github.com/RyanDur/Ruth-Teitelbaum-emacs-config][Back to main config]]
 
 ** Magit
 
@@ -21,4 +21,10 @@
    (use-package git-link
      :ensure t
      :config (global-set-key (kbd "C-c g l") 'git-link))
+   #+END_SRC
+
+   I would like to see the older versions of a file
+   #+BEGIN_SRC emacs-lisp
+   (use-package git-timemachine
+     :ensure t)
    #+END_SRC

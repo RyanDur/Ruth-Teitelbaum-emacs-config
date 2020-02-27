@@ -3,8 +3,9 @@
                          ("elpa" . "http://elpa.gnu.org/packages/")
                          ;; ("marmalade" . "http://marmalade-repo.org/packages/")
                          ("org" . "http://orgmode.org/elpa/")
-                         ("melpa-stable" . "http://melpa-stable.milkbox.net/packages/")
-                         ("melpa" . "http://melpa.milkbox.net/packages/")))
+                         ("melpa-stable" . "http://stable.melpa.org/packages/")
+                         ("melpa" . "http://melpa.org/packages/")))
+
 (package-initialize)
 
 (unless (package-installed-p 'use-package)

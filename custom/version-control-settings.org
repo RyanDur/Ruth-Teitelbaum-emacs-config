@@ -16,5 +16,7 @@
 
    Create links to pages in Git-hub
    #+BEGIN_SRC emacs-lisp
-   (use-package git-link :ensure t)
+   (use-package git-link
+     :ensure t
+     :config (global-set-key (kbd "C-c g l") 'git-link))
    #+END_SRC

@@ -39,3 +39,8 @@
     (setq org-src-tab-acts-natively t)
     (setq org-edit-src-content-indentation 0))
   #+END_SRC
+
+  Auto commit org files after every save.
+  #+BEGIN_SRC emacs-lisp
+  (add-hook 'org-mode-hook 'git-auto-commit-mode)
+  #+END_SRC

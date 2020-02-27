@@ -8,7 +8,7 @@
      :ensure t)
    #+END_SRC
 
-
+   Setup auto commit on save for a given hook
    #+BEGIN_SRC emacs-lisp
    (use-package git-auto-commit-mode
      :ensure t)

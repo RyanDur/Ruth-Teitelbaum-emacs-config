@@ -2,9 +2,9 @@
 
 [[file:../README.org][Back to main config]]
 
-* base
+* [[https://alhassy.github.io/init/][Base setup]]
 
-  [[https://alhassy.github.io/init/][Base setup from _Life within Org-mode_]]
+  From _Life within Org-mode_
   /Let's obtain Org-mode along with the extras that allow us to ignore
   heading names, but still utilise their contents –e.g., such as a
   heading named ‘preamble’ that contains org-mode setup for a file./

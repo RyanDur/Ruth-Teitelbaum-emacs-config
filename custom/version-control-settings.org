@@ -1,5 +1,7 @@
 * Version Control
 
+[[https://github.com/RyanDur/Ruth-Teitelbaum-emacs-config][Back to main config]]
+
 ** Magit
 
    Use git for  version control

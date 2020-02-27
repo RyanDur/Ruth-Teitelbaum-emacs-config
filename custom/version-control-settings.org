@@ -28,3 +28,9 @@
    (use-package git-timemachine
      :ensure t)
    #+END_SRC
+
+   I would like to see the last commit for a line in a pop-up
+   #+BEGIN_SRC emacs-lisp
+   (use-package git-messenger
+     :ensure t)
+   #+END_SRC

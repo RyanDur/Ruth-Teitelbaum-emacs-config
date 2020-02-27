@@ -260,6 +260,11 @@
      (setq flyspell-issue-message-flg nil))
    #+END_SRC
 
+   Add popup for flyspell. At the moment this is the only place this is used.
+   #+BEGIN_SRC emacs-lisp
+   (use-package popup :ensure t)
+   #+END_SRC
+
 ** I like having a pop-up with spelling suggestions.
    #+BEGIN_SRC emacs-lisp
    (defun flyspell-emacs-popup-textual (event poss word)

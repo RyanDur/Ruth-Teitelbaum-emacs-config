@@ -4,54 +4,68 @@
 
 * [[https://alhassy.github.io/init/][Base setup]]
 
-  From _Life within Org-mode_
-  /Let's obtain Org-mode along with the extras that allow us to ignore
-  heading names, but still utilise their contents –e.g., such as a
-  heading named ‘preamble’ that contains org-mode setup for a file./
+**  From _Life within Org-mode_
+   /Let's obtain Org-mode along with the extras that allow us to ignore
+   heading names, but still utilise their contents –e.g., such as a
+   heading named ‘preamble’ that contains org-mode setup for a file./
 
-  Found some of these on the "[[https://explog.in/dot/emacs/config.html][A literate emacs configuration]]" page
+   Found some of these on the "[[https://explog.in/dot/emacs/config.html][A literate emacs configuration]]" page
 
-  #+BEGIN_SRC emacs-lisp
-  (use-package org
-    :pin org
-    :ensure org-plus-contrib
-    :config
-    (require 'ox-extra)
-    (ox-extras-activate '(ignore-headlines))
+   #+BEGIN_SRC emacs-lisp
+   (use-package org
+     :pin org
+     :ensure org-plus-contrib
+     :config
+     (require 'ox-extra)
+     (ox-extras-activate '(ignore-headlines))
 
-    (global-set-key (kbd "C-c l") 'org-store-link)
-    (global-set-key (kbd "C-c a") 'org-agenda)
-    (global-set-key (kbd "C-c c") 'org-capture)
+     (global-set-key (kbd "C-c l") 'org-store-link)
+     (global-set-key (kbd "C-c a") 'org-agenda)
+     (global-set-key (kbd "C-c c") 'org-capture)
 
-    (setq org-log-done t)
+     (setq org-log-done t)
 
-    (setq org-agenda-files (list "~/org"))
-    (setq org-return-follows-link t)
+     (setq org-agenda-files (list "~/org"))
+     (setq org-return-follows-link t)
 
-    ;; M-S-RET not working in the terminal
-    (org-defkey org-mode-map (kbd "C-c b") 'org-insert-todo-heading)
+     ;; M-S-RET not working in the terminal
+     (org-defkey org-mode-map (kbd "C-c b") 'org-insert-todo-heading)
 
-    ;; Better source code window editing
-    (setq org-src-window-setup 'other-window)
+     ;; Better source code window editing
+     (setq org-src-window-setup 'other-window)
 
-    ;; Highlight and indent source code blocks
-    (setq org-src-fontify-natively t)
-    (setq org-src-tab-acts-natively t)
-    (setq org-edit-src-content-indentation 0))
-  #+END_SRC
+     ;; Highlight and indent source code blocks
+     (setq org-src-fontify-natively t)
+     (setq org-src-tab-acts-natively t)
+     (setq org-edit-src-content-indentation 0))
+   #+END_SRC
 
-  Auto commit org files after every save.
-  #+BEGIN_SRC emacs-lisp
-  (add-hook 'org-mode-hook 'git-auto-commit-mode)
-  #+END_SRC
+**  Auto commit org files after every save.
+   #+BEGIN_SRC emacs-lisp
+   (add-hook 'org-mode-hook 'git-auto-commit-mode)
+   #+END_SRC
 
-  Separate todo list into another file
-  #+BEGIN_SRC emacs-lisp
-  (use-package magit-org-todos
-    :ensure t
-    :config
-    (magit-org-todos-autoinsert))
-  #+END_SRC
+**  Separate todo list into another file
+   #+BEGIN_SRC emacs-lisp
+   (use-package magit-org-todos
+     :ensure t
+     :config
+     (magit-org-todos-autoinsert))
+   #+END_SRC
 
-  #+RESULTS:
-  : t
+** Citations
+
+   #+BEGIN_SRC emacs-lisp
+   (use-package helm-bibtex
+     :ensure t
+     :config
+     (setq bibtex-completion-bibliography
+	   '("~/Documents/bib/references.bib")))
+
+   (use-package org-ref
+     :ensure t
+     :config
+     (setq reftex-default-bibliography '("~/Documents/bib/references.bib"))
+     (setq org-ref-default-bibliography '("~/Documents/bib/references.bib")
+	   org-ref-pdf-directory "~/Documents/bib/pdfs/"))
+   #+END_SRC

@@ -1,8 +1,8 @@
 auto-save-list
 elpa
 local
-org/**/*.el
-custom/**/*.el
+./**/*.el
+!iniit.el
 README.el
 ido*
 \#*

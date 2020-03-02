@@ -361,5 +361,8 @@
   (use-package multiple-cursors
     :ensure t
     :config
+
+    ;; When you have an active region that spans multiple lines,
+    ;; the following will add a cursor to each line:
     (global-set-key (kbd "C-c m c") 'mc/edit-lines))
   #+END_SRC

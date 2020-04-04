@@ -45,6 +45,7 @@
     (use-package flycheck
       :ensure t
       :config
+      (global-flycheck-mode)
       (defun my/use-eslint-from-node-modules ()
 	(let ((root (locate-dominating-file
 		     (or (buffer-file-name) default-directory)

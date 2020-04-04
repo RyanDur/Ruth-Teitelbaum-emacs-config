@@ -23,3 +23,9 @@
 	   (require 'tern-auto-complete)
 	   (tern-ac-setup))))
     #+END_SRC
+
+*** indium
+
+    #+BEGIN_SRC emacs-lisp
+(use-package indium :ensure t
+    #+END_SRC

@@ -27,6 +27,9 @@
 *** indium
 
     #+BEGIN_SRC emacs-lisp
+    (use-package exec-path-from-shell
+      :ensure t
+      :config (exec-path-from-shell-initialize))
     (use-package indium
       :ensure t
       :config (add-hook 'js-mode-hook #'indium-interaction-mode))

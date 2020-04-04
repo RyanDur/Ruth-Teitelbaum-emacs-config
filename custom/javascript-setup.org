@@ -4,13 +4,20 @@
 
 ** [[https://ternjs.net/doc/manual.html#emacs][Tern, the "intelligent javascript tooling"]]
 
-   #+BEGIN_SRC emacs-lisp
-   (add-to-list 'load-path "/Users/ryandurling/.emacs.d/submodules/tern/emacs")
-   (autoload 'tern-mode "tern.el" nil t)
-   (add-hook 'js-mode-hook (lambda () (tern-mode t)))
+*** basic  setup
+    #+BEGIN_SRC emacs-lisp
+    (add-to-list 'load-path "/Users/ryandurling/.emacs.d/submodules/tern/emacs")
+    (autoload 'tern-mode "tern.el" nil t)
+    (add-hook 'js-mode-hook (lambda () (tern-mode t)))
+    #+END_SRC
 
-   (eval-after-load 'tern
-     '(progn
-	(require 'tern-auto-complete)
-	(tern-ac-setup)))
-   #+END_SRC
+*** auto complete
+
+    #+BEGIN_SRC emacs-lisp
+    (use-package auto-complete
+      :ensure t
+      :config (eval-after-load 'tern
+		'(progn
+		   (require 'tern-auto-complete)
+		   (tern-ac-setup))))
+    #+END_SRC

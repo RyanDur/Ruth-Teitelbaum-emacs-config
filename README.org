@@ -82,5 +82,5 @@ ln -s /usr/local/opt/emacs-head/Emacs.app /Applications
 ** JavaScript
 
    #+BEGIN_SRC emacs-lisp
-   (org-babel-load-if-exists "custom/javascript-settings.org")
+   (org-babel-load-if-exists "custom/javascript-setup.org")
    #+END_SRC

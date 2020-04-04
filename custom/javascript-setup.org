@@ -31,6 +31,10 @@
       :ensure t
       :config (exec-path-from-shell-initialize))
 
+    (use-package company-mode
+      :ensure t
+      :config (add-hook 'indium-mode-hook #'company-mode))
+
     (use-package indium
       :ensure t
       :config (add-hook 'js-mode-hook #'indium-interaction-mode))

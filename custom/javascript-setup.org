@@ -1,0 +1,7 @@
+* My JavaScript setup
+
+*** JS3Mode
+
+    #BEGIN_SRC emacs
+
+    #END_SRC

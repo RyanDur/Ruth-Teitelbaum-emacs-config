@@ -53,7 +53,7 @@
      (magit-org-todos-autoinsert))
    #+END_SRC
 
-** Citations
+**  Citations
 
    #+BEGIN_SRC emacs-lisp
    (use-package helm-bibtex

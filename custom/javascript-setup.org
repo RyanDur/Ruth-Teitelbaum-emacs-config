@@ -2,7 +2,7 @@
 
 *
 
-** Tern, the "intelligent javascript tooling"
+** [[https://ternjs.net/doc/manual.html#emacs][Tern, the "intelligent javascript tooling"]]
 
    #+BEGIN_SRC emacs-lisp
    (add-to-list 'load-path "/Users/ryandurling/.emacs.d/custom-downloads/tern/emacs")

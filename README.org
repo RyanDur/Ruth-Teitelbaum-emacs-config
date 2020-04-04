@@ -5,6 +5,13 @@ that made you learn the thing in the first place. When it comes to
 emacs, I will steal what I can from my Brother. If you would like to
 see the original, you can find it here [[https://github.com/otfrom/otfrom-org-emacs/blob/master/org/config.org][otfrom/otfrom-org-emacs]].
 
+I am also using emacs 28, to get the latest version:
+#+BEGIN_SRC
+# first, rename existing /Applications/Emacs.app -> Emacs26.app
+brew tap daviderestivo/emacs-head
+brew install emacs-head --HEAD --with-cocoa --with-imagemagick --with-jansson
+ln -s /usr/local/opt/emacs-head/Emacs.app /Applications
+#+END_SRC
 * Helpers
 
   He created a number of helper functions that we'll need through the

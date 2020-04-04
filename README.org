@@ -13,6 +13,11 @@ brew install emacs-head --HEAD --with-cocoa --with-imagemagick --with-jansson
 ln -s /usr/local/opt/emacs-head/Emacs.app /Applications
 #+END_SRC
 
+#+BEGIN_SRC emacs-lisp
+(setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin"))
+    (setq exec-path (append exec-path '("/usr/local/bin")))
+#+END_SRC
+
 * Helpers
 
   He created a number of helper functions that we'll need through the

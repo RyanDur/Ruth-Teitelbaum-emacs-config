@@ -5,7 +5,7 @@
 ** Tern, the "intelligent javascript tooling"
 
    #+BEGIN_SRC emacs-lisp
-   (add-to-list 'load-path "~/.emacs.d/custom-downloads/tern/emacs/tern.el")
+   (add-to-list 'load-path "/Users/ryandurling/.emacs.d/custom-downloads/tern/emacs/tern.el")
    (autoload 'tern-mode "tern.el" nil t)
    (add-hook 'js-mode-hook (lambda () (tern-mode t)))
    #+END_SRC

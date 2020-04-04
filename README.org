@@ -53,6 +53,14 @@ ln -s /usr/local/opt/emacs-head/Emacs.app /Applications
 
 * Configuration
 
+  The OS X Terminal.app uses UTF-8 by default. To get the correct behavior
+  from the Emacs that comes with OS X, use the following [[https://www.emacswiki.org/emacs/EmacsForMacOS#toc21][settings]]:
+  #+BEGIN_SRC emacs-lisp
+  (set-terminal-coding-system 'utf-8)
+  (set-keyboard-coding-system 'utf-8)
+  (prefer-coding-system 'utf-8)
+  #+END_SRC
+
 ** [[https://github.com/RyanDur/Ruth-Teitelbaum-emacs-config/blob/master/custom/base-preferences.org#L1][Base preferences]]
 
    #+BEGIN_SRC emacs-lisp

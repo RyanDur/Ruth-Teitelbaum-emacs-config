@@ -16,8 +16,10 @@
     #+BEGIN_SRC emacs-lisp
     (use-package auto-complete
       :ensure t
-      :config (eval-after-load 'tern
-		'(progn
-		   (require 'tern-auto-complete)
-		   (tern-ac-setup))))
+      :config
+      (add-hook 'js-mode-hook (lambda () (auto-complete-mode t))
+		(eval-after-load 'tern
+		  '(progn
+		     (require 'tern-auto-complete)
+		     (tern-ac-setup))))
     #+END_SRC

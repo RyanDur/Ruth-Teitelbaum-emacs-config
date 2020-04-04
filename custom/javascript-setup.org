@@ -2,10 +2,10 @@
 
 *
 
-** JS3Mode
+** Tern, the "intelligent javascript tooling"
 
-    #+BEGIN_SRC emacs-lisp
-    '(js3-auto-indent-p t)         ; it's nice for commas to right themselves.
-    '(js3-enter-indents-newline t) ; don't need to push tab before typing
-    '(js3-indent-on-enter-key t)   ; fix indenting before moving on
-    #+END_SRC
+   #+BEGIN_SRC emacs-lisp
+   (use-package tern
+     :ensure t
+     :config (add-hook 'js-mode-hook (lambda () (tern-mode t))))
+   #+END_SRC

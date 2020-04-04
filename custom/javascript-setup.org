@@ -1,6 +1,6 @@
 #+TITLE: My JavaScript setup
 
-*
+* my own setup for working in javascript
 
 ** [[https://ternjs.net/doc/manual.html#emacs][Tern, the "intelligent javascript tooling"]]
 

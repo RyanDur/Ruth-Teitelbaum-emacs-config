@@ -27,5 +27,7 @@
 *** indium
 
     #+BEGIN_SRC emacs-lisp
-    (use-package indium :ensure t)
+    (use-package indium
+      :ensure t
+      :config (add-hook 'js-mode-hook #'indium-interaction-mode))
     #+END_SRC

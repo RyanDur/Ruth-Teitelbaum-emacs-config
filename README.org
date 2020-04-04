@@ -78,3 +78,9 @@ ln -s /usr/local/opt/emacs-head/Emacs.app /Applications
    #+BEGIN_SRC emacs-lisp
    (org-babel-load-if-exists "custom/version-control-settings.org")
    #+END_SRC
+
+** JavaScript
+
+   #+BEGIN_SRC emacs-lisp
+   (org-babel-load-if-exists "custom/javascript-settings.org")
+   #+END_SRC

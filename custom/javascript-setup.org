@@ -4,7 +4,7 @@
 
 ** [[https://ternjs.net/doc/manual.html#emacs][Tern, the "intelligent javascript tooling"]]
 
-*** basic  setup
+*** basic setup
     #+BEGIN_SRC emacs-lisp
     (add-to-list 'load-path "/Users/ryandurling/.emacs.d/submodules/tern/emacs")
     (autoload 'tern-mode "tern.el" nil t)
@@ -17,9 +17,9 @@
     (use-package auto-complete
       :ensure t
       :config
-      (add-hook 'js-mode-hook (lambda () (auto-complete-mode t))
-		(eval-after-load 'tern
-		  '(progn
-		     (require 'tern-auto-complete)
-		     (tern-ac-setup))))
+      (add-hook 'js-mode-hook (lambda () (auto-complete-mode t)))
+      (eval-after-load 'tern
+	'(progn
+	   (require 'tern-auto-complete)
+	   (tern-ac-setup))))
     #+END_SRC

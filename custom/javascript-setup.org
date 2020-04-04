@@ -30,7 +30,9 @@
     (use-package exec-path-from-shell
       :ensure t
       :config (exec-path-from-shell-initialize))
+
     (add-hook 'after-init-hook 'global-company-mode)
+
     (use-package indium
       :ensure t
       :config

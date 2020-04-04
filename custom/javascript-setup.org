@@ -1,4 +1,4 @@
-* My JavaScript setup
+#+TITLE: My JavaScript setup
 
 *** JS3Mode
 

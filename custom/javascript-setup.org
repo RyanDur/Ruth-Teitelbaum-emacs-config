@@ -1,6 +1,8 @@
 #+TITLE: My JavaScript setup
 
-*** JS3Mode
+*
+
+** JS3Mode
 
     #+BEGIN_SRC emacs-lisp
     '(js3-auto-indent-p t)         ; it's nice for commas to right themselves.

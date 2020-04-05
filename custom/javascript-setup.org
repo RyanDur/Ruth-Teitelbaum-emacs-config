@@ -141,4 +141,12 @@
    (add-to-list 'load-path "/Users/ryandurling/.emacs.d/submodules/auto-fix.el/auto-fix.el")
    (autoload 'auto-fix-mode "auto-fix.el" nil t)
    (add-hook 'typescript-mode-hook (lambda () (auto-fix-mode t)))
+   (add-hook 'auto-fix-mode-hook
+	     (lambda () (add-hook 'before-save-hook #'auto-fix-before-save)))
+
+   (defun setup-ts-auto-fix ()
+     (setq-local auto-fix-command "tslint")
+     (auto-fix-mode +1))
+
+   (add-hook 'typescript-mode-hook #'setup-ts-auto-fix)
    #+END_SRC

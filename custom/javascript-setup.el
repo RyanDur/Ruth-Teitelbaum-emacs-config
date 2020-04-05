@@ -1,12 +1,15 @@
+(use-package add-node-modules-path
+  :ensure t
+  :config
+  (eval-after-load 'typescript-mode
+    '(add-hook 'typescript-mode-hook #'add-node-modules-path))
+  (eval-after-load 'js-mode
+    '(add-hook 'js-mode-hook #'add-node-modules-path)))
+
 (add-to-list 'load-path "/Users/ryandurling/.emacs.d/submodules/tern/emacs")
 (autoload 'tern-mode "tern.el" nil t)
 (add-hook 'js-mode-hook (lambda () (tern-mode t)))
 (setq js-indent-level 2)
-
-(use-package add-node-modules-path
-  :ensure t
-  :config (eval-after-load 'js-mode
-	    '(add-hook 'js-mode-hook #'add-node-modules-path)))
 
 (use-package auto-complete
   :ensure t
@@ -56,7 +59,7 @@
 					  root))))
       (when (and eslint (file-executable-p eslint))
 	(setq-local flycheck-javascript-eslint-executable eslint))))
-  (add-hook 'flycheck-mode-hook #'my/use-eslint-from-node-modules))
+  (add-hook 'js-mode-hook #'my/use-eslint-from-node-modules))
 
 (defun eslint-fix-file ()
   (interactive)
@@ -71,3 +74,25 @@
 (add-hook 'js-mode-hook
 	  (lambda ()
 	    (add-hook 'after-save-hook #'eslint-fix-file-and-revert)))
+
+(use-package typescript-mode
+  :ensure t)
+
+(use-package ansi-color
+  :ensure t
+  :config
+  (defun colorize-compilation-buffer ()
+    (ansi-color-apply-on-region compilation-filter-start (point-max)))
+  (add-hook 'compilation-filter-hook 'colorize-compilation-buffer))
+
+(add-to-list 'load-path "/Users/ryandurling/.emacs.d/submodules/auto-fix.el")
+(autoload 'auto-fix-mode "auto-fix.el" nil t)
+(add-hook 'typescript-mode-hook (lambda () (auto-fix-mode t)))
+(add-hook 'auto-fix-mode-hook
+	  (lambda () (add-hook 'before-save-hook #'auto-fix-before-save)))
+
+(defun setup-ts-auto-fix ()
+  (setq-local auto-fix-command "tslint")
+  (auto-fix-mode +1))
+
+(add-hook 'typescript-mode-hook #'setup-ts-auto-fix)

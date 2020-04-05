@@ -85,7 +85,8 @@
 	    (setq-local flycheck-javascript-eslint-executable eslint))))
       (add-hook 'flycheck-mode-hook #'my/use-eslint-from-node-modules))
 
-    (define-key js-mode-map "\C-c i" nil)
+    (after-load 'js-mode
+		(define-key js-mode-map (kbd "C-c i") 'nil))
 
     (setq js-indent-level 2)
 

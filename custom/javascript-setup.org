@@ -1,12 +1,10 @@
 #+TITLE: My JavaScript setup
 
-*
-
-** my own setup for working in JavaScript
+* my own setup for working in JavaScript
 
 [[https://ternjs.net/doc/manual.html#emacs][Tern, the "intelligent javascript tooling"]]
 
-*** basic setup
+** basic setup
     #+BEGIN_SRC emacs-lisp
     (add-to-list 'load-path "/Users/ryandurling/.emacs.d/submodules/tern/emacs")
     (autoload 'tern-mode "tern.el" nil t)
@@ -14,7 +12,7 @@
     (setq js-indent-level 2)
     #+END_SRC
 
-*** Always find the [[https://github.com/codesuki/add-node-modules-path][nearest node_modules]]
+** Always find the [[https://github.com/codesuki/add-node-modules-path][nearest node_modules]]
 
     This file provides add-node-modules-path, which searches the current files parent directories for the
     node_modules/.bin/ directory and adds it to the buffer local exec-path. This allows Emacs to find project
@@ -27,7 +25,7 @@
 		'(add-hook 'js-mode-hook #'add-node-modules-path)))
     #+END_SRC
 
-*** auto complete
+** auto complete
 
     #+BEGIN_SRC emacs-lisp
     (use-package auto-complete
@@ -40,7 +38,7 @@
 	   (tern-ac-setup))))
     #+END_SRC
 
-*** indium
+** indium
 
     #+BEGIN_SRC emacs-lisp
     (use-package exec-path-from-shell
@@ -59,7 +57,7 @@
       (add-hook 'js-mode-hook #'indium-interaction-mode))
     #+END_SRC
 
-*** Lint
+** Lint
 
     On the fly eslint
     #+BEGIN_SRC emacs-lisp

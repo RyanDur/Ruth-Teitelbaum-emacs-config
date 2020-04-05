@@ -11,7 +11,11 @@
     (add-hook 'js-mode-hook (lambda () (tern-mode t)))
     #+END_SRC
 
-*** Always find the nearest node_modules
+*** Always find the [[https://github.com/codesuki/add-node-modules-path][nearest node_modules]]
+
+    This file provides add-node-modules-path, which searches the current files parent directories for the
+    node_modules/.bin/ directory and adds it to the buffer local exec-path. This allows Emacs to find project
+    based installs of e.g. eslint.
 
     #+BEGIN_SRC emacs-lisp
     (use-package add-node-modules-path
@@ -54,5 +58,5 @@
     (use-package flycheck
       :ensure t
       :config
-      (global-flycheck-mode)
+      (global-flycheck-mode))
     #+END_SRC

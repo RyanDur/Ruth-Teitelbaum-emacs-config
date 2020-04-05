@@ -70,6 +70,11 @@
 
       (flycheck-add-mode 'javascript-eslint 'web-mode)
 
+      (setq-default flycheck-disabled-checkers
+		    (append flycheck-disabled-checkers
+			    '(json-jsonlist)))
+
+
       (defun my/use-eslint-from-node-modules ()
 	(let* ((root (locate-dominating-file
 		      (or (buffer-file-name) default-directory)

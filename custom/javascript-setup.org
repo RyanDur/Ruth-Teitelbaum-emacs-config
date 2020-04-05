@@ -21,7 +21,6 @@
    (use-package add-node-modules-path
      :ensure t
      :config (eval-after-load 'js-mode
-	       '(add-hook 'js-mode-hook #'add-node-modules-path)
 	       '(add-hook 'typescript-mode-hook #'add-node-modules-path)))
    #+END_SRC
 

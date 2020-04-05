@@ -126,7 +126,7 @@
    #+END_SRC
 
    #+BEGIN_SRC emacs-lisp
-   (add-to-list 'load-path "/Users/ryandurling/.emacs.d/submodules/auto-fix.el/auto-fix.el")
+   (add-to-list 'load-path "/Users/ryandurling/.emacs.d/submodules/auto-fix.el")
    (autoload 'auto-fix-mode "auto-fix.el" nil t)
    (add-hook 'typescript-mode-hook (lambda () (auto-fix-mode t)))
    (add-hook 'auto-fix-mode-hook

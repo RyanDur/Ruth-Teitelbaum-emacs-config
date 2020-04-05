@@ -66,9 +66,7 @@
       :config
       '(custom-set-variables
 	'(flycheck-disabled-checkers '(javascript-jshint javascript-jscs))))
-
-    (flycheck-add-mode 'javascript-eslint 'js-mode)
-
+    (setq flycheck-javascript-eslint-executable "eslint_d")
     (use-package eslintd-fix
       :ensure t
       :config

@@ -86,7 +86,7 @@
       (add-hook 'flycheck-mode-hook #'my/use-eslint-from-node-modules))
 
     (after-load 'js-mode
-		(define-key js-mode-map (kbd "C-c i") 'nil))
+		(unset-key js-mode-map (kbd "C-c i")))
 
     (setq js-indent-level 2)
 

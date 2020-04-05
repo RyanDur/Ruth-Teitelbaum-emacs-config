@@ -1,6 +1,7 @@
 (add-to-list 'load-path "/Users/ryandurling/.emacs.d/submodules/tern/emacs")
 (autoload 'tern-mode "tern.el" nil t)
 (add-hook 'js-mode-hook (lambda () (tern-mode t)))
+(setq js-indent-level 2)
 
 (use-package add-node-modules-path
   :ensure t
@@ -56,8 +57,6 @@
       (when (and eslint (file-executable-p eslint))
 	(setq-local flycheck-javascript-eslint-executable eslint))))
   (add-hook 'flycheck-mode-hook #'my/use-eslint-from-node-modules))
-
-(setq js-indent-level 2)
 
 (defun eslint-fix-file ()
   (interactive)

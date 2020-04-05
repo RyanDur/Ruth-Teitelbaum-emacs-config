@@ -109,7 +109,7 @@
 ** basic setup
 
    #+BEGIN_SRC emacs-lisp
-   (use-package typescript
+   (use-package typescript-mode
      :ensure t)
 
    (use-package ansi-color

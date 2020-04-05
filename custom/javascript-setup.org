@@ -18,7 +18,7 @@
        '(add-hook 'js-mode-hook #'add-node-modules-path)))
    #+END_SRC
 
-* Lint
+x* Lint
 
   On the fly eslint
   #+BEGIN_SRC emacs-lisp

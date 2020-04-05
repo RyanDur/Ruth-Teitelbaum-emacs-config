@@ -85,8 +85,8 @@
 	    (setq-local flycheck-javascript-eslint-executable eslint))))
       (add-hook 'flycheck-mode-hook #'my/use-eslint-from-node-modules))
 
-    (after-load 'js-mode
-		(local-unset-key "C-c i"))
+
+    (local-unset-key "C-c i")
 
     (setq js-indent-level 2)
 

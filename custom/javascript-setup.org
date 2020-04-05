@@ -60,9 +60,14 @@
 
     #+BEGIN_SRC emacs-lisp
     (use-package flycheck
+      :defer 1
       :ensure t
+      :init (global-flycheck-mode)
       :config
-      (global-flycheck-mode)
-      ((js-mode . ((flycheck-disabled-checkers . (javascript-jshint))
-		   (flycheck-checkers . (javascript-eslint))))))
+      (setq-default flycheck-global-modes '(not org-mode))
+      ;; disable json-jsonlist checking for json files
+      (setq-default flycheck-disabled-checkers (append flycheck-disabled-checkers '(json-jsonlist)))
+      ;; disable jshint since we prefer eslint checking
+      (setq-default flycheck-disabled-checkers (append flycheck-disabled-checkers '(javascript-jshint)))
+      )
     #+END_SRC

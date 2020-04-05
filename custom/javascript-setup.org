@@ -58,5 +58,6 @@
     (use-package flycheck
       :ensure t
       :config
-      (global-flycheck-mode))
+      (global-flycheck-mode)
+      (setq-default flycheck-disabled-checkers (append flycheck-disabled-checkers '(javascript-jshint))))
     #+END_SRC

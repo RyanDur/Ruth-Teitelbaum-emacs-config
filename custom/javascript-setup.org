@@ -124,7 +124,7 @@
        (ansi-color-apply-on-region compilation-filter-start (point-max)))
      (add-hook 'compilation-filter-hook 'colorize-compilation-buffer))
 
-   (use-package auto-fix
+   (use-package auto-fix-mode
      :ensure t
      :config
      (add-hook 'auto-fix-mode-hook

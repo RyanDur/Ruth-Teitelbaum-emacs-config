@@ -104,3 +104,4 @@
 	      (lambda ()
 		(add-hook 'after-save-hook #'eslint-fix-file-and-revert)))
     #+END_SRC
+* TypeScript

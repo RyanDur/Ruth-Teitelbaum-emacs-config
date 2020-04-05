@@ -123,22 +123,4 @@
      (defun colorize-compilation-buffer ()
        (ansi-color-apply-on-region compilation-filter-start (point-max)))
      (add-hook 'compilation-filter-hook 'colorize-compilation-buffer))
-
-   (defun tslint-fix-file ()
-     "Tslint fix file."
-     (interactive)
-     (message (concat "tslint --fixing the file " (buffer-file-name)))
-     (shell-command (concat "tslint --fix" (buffer-file-name))))
-
-   (defun tslint-fix-file-and-revert ()
-
-     "Format the current file with TSLint."
-     (interactive)
-     (when (eq major-mode 'typescript-mode)
-       (if (executable-find "tslint")
-	   (tslint-fix-file)
-	 (message "TSLint not found."))))
-
-   ;; formats the buffer after saving
-   (add-hook 'after-save-hook 'tslint-fix-file-and-revert)
    #+END_SRC

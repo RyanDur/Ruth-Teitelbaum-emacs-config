@@ -69,4 +69,6 @@
       (setq-default flycheck-disabled-checkers (append flycheck-disabled-checkers '(json-jsonlist)))
       ;; disable jshint since we prefer eslint checking
       (setq-default flycheck-disabled-checkers (append flycheck-disabled-checkers '(javascript-jshint))))
+
+    (flycheck-add-mode 'javascript-eslint 'js-mode)
     #+END_SRC

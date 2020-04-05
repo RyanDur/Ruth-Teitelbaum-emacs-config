@@ -50,7 +50,7 @@
     (interactive)
     (message "eslint --fix the file" (buffer-file-name))
     (call-process-shell-command
-     (concat "yarn eslint --fix " (buffer-file-name))
+     (concat "npx eslint --fix " (buffer-file-name))
      nil "*Shell Command Output*" t)
     (revert-buffer t t))
 
@@ -120,8 +120,4 @@
      (defun colorize-compilation-buffer ()
        (ansi-color-apply-on-region compilation-filter-start (point-max)))
      (add-hook 'compilation-filter-hook 'colorize-compilation-buffer))
-
-   (add-hook 'typescript-mode-hook
-	     (lambda ()
-	       (add-hook 'after-save-hook #'eslint-fix-file-and-revert)))
    #+END_SRC

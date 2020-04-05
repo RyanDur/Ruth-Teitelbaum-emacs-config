@@ -1,6 +1,6 @@
-#+TITLE: My JavaScript setup
+#+TITLE: My Fromt-end setup
 
-* my own setup for working in JavaScript
+* JavaScript
 
 [[https://ternjs.net/doc/manual.html#emacs][Tern, the "intelligent javascript tooling"]]
 
@@ -104,4 +104,5 @@
 	      (lambda ()
 		(add-hook 'after-save-hook #'eslint-fix-file-and-revert)))
     #+END_SRC
+
 * TypeScript

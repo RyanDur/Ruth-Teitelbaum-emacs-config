@@ -68,4 +68,9 @@
 	'(flycheck-disabled-checkers '(javascript-jshint javascript-jscs))))
 
     (flycheck-add-mode 'javascript-eslint 'js-mode)
+
+    (use-package eslintd-fix
+      :ensure t
+      :config
+(add-hook 'js-mode-hook 'eslintd-fix-mode))
     #+END_SRC

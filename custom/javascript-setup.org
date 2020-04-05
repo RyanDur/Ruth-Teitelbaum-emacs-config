@@ -20,7 +20,7 @@
    #+BEGIN_SRC emacs-lisp
    (use-package add-node-modules-path
      :ensure t
-     :config (eval-after-load 'js-mode
+     :config (eval-after-load 'typescript-mode
 	       '(add-hook 'typescript-mode-hook #'add-node-modules-path)))
    #+END_SRC
 

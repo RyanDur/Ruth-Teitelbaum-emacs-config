@@ -42,10 +42,10 @@
     #+BEGIN_SRC emacs-lisp
     (use-package exec-path-from-shell
       :ensure t
+      :custom
+      (exec-path-from-shell-check-startup-files nil)
       :config
-      (setq exec-path-from-shell-variables '("PATH" "MANPATH" "SSH_CLIENT" "HOSTNAME"
-					     "GTAGSCONF" "GTAGSLABEL" "RUST_SRC_PATH"
-					     "HISTFILE" "HOME" "GOPATH" "GOROOT" "GOEXEC"))
+      (push "HISTFILE" exec-path-from-shell-variables)
       (exec-path-from-shell-initialize))
 
     (add-hook 'after-init-hook 'global-company-mode)

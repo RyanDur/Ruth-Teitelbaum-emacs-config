@@ -57,6 +57,10 @@
   (add-hook 'js-mode-hook
 	    (lambda ()
 	      (add-hook 'after-save-hook #'tim-eslint-fix-file)))
+
+  (add-hook 'typescript-mode-hook
+	    (lambda ()
+	      (add-hook 'after-save-hook #'tim-eslint-fix-file)))
   #+END_SRC
 
 * JavaScript

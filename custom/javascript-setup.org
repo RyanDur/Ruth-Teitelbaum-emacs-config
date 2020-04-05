@@ -59,13 +59,6 @@
 *** Lint
 
     #+BEGIN_SRC emacs-lisp
-    (use-package flycheck
-      :defer 1
-      :ensure t
-      :init (global-flycheck-mode)
-      :config
-      '(custom-set-variables
-	'(flycheck-disabled-checkers '(javascript-jshint javascript-jscs))))
     (setq flycheck-javascript-eslint-executable "eslint_d")
     (use-package eslintd-fix
       :ensure t

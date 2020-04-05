@@ -123,18 +123,6 @@
      (defun colorize-compilation-buffer ()
        (ansi-color-apply-on-region compilation-filter-start (point-max)))
      (add-hook 'compilation-filter-hook 'colorize-compilation-buffer))
-
-   (use-package auto-fix-mode
-     :ensure t
-     :config
-     (add-hook 'auto-fix-mode-hook
-	       (lambda () (add-hook 'before-save-hook #'auto-fix-before-save)))
-
-     (defun setup-ts-auto-fix ()
-       (setq-local auto-fix-command "tslint")
-       (auto-fix-mode +1))
-
-     (add-hook 'typescript-mode-hook #'setup-ts-auto-fix))
    #+END_SRC
 
    #+BEGIN_SRC emacs-lisp

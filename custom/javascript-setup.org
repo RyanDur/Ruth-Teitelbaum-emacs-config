@@ -123,4 +123,7 @@
      (defun colorize-compilation-buffer ()
        (ansi-color-apply-on-region compilation-filter-start (point-max)))
      (add-hook 'compilation-filter-hook 'colorize-compilation-buffer))
+
+(use-package auto-fix
+:ensure t)
    #+END_SRC

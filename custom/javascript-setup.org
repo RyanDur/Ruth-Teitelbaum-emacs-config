@@ -72,5 +72,5 @@
     (use-package eslintd-fix
       :ensure t
       :config
-(add-hook 'js-mode-hook 'eslintd-fix-mode))
+      (add-hook 'js-mode-hook 'eslintd-fix-mode))
     #+END_SRC

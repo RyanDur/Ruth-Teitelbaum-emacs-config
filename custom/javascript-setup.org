@@ -84,5 +84,5 @@
 
 	  (flycheck-select-checker checker)))
 
-      (add-hook 'web-mode-hook #'configure-web-mode-flycheck-checkers))
+      (add-hook 'js-mode-hook #'configure-web-mode-flycheck-checkers))
     #+END_SRC

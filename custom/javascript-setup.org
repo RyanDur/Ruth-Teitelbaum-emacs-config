@@ -119,17 +119,6 @@
        (ansi-color-apply-on-region compilation-filter-start (point-max)))
      (add-hook 'compilation-filter-hook 'colorize-compilation-buffer))
 
-   (defun my/use-tslint-from-node-modules ()
-     (let* ((root (locate-dominating-file
-		   (or (buffer-file-name) default-directory)
-		   "node_modules"))
-	    (tslint (and root
-			 (expand-file-name "node_modules/tslint/bin/tslint.js"
-					   root))))
-       (when (and tslint (file-executable-p eslint))
-	 (setq-local flycheck-javascript-tslint-executable tslint))))
-   (add-hook 'typescript-mode-hook #'my/use-tslint-from-node-modules)
-
    (defun tslint-fix-file ()
      "Tslint fix file."
      (interactive)

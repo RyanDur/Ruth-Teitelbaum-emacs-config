@@ -18,50 +18,7 @@
        '(add-hook 'js-mode-hook #'add-node-modules-path)))
    #+END_SRC
 
-* JavaScript
-
-** basic setup
-   [[https://ternjs.net/doc/manual.html#emacs][Tern, the "intelligent javascript tooling"]]
-   #+BEGIN_SRC emacs-lisp
-   (add-to-list 'load-path "/Users/ryandurling/.emacs.d/submodules/tern/emacs")
-   (autoload 'tern-mode "tern.el" nil t)
-   (add-hook 'js-mode-hook (lambda () (tern-mode t)))
-   (setq js-indent-level 2)
-   #+END_SRC
-
-** auto complete
-
-   #+BEGIN_SRC emacs-lisp
-   (use-package auto-complete
-     :ensure t
-     :config
-     (add-hook 'js-mode-hook (lambda () (auto-complete-mode t)))
-     (eval-after-load 'tern
-       '(progn
-	  (require 'tern-auto-complete)
-	  (tern-ac-setup))))
-   #+END_SRC
-
-** indium
-
-   #+BEGIN_SRC emacs-lisp
-   (use-package exec-path-from-shell
-     :ensure t
-     :custom
-     (exec-path-from-shell-check-startup-files nil)
-     :config
-     (push "HISTFILE" exec-path-from-shell-variables)
-     (exec-path-from-shell-initialize))
-
-   (add-hook 'after-init-hook 'global-company-mode)
-
-   (use-package indium
-     :ensure t
-     :config
-     (add-hook 'js-mode-hook #'indium-interaction-mode))
-   #+END_SRC
-
-** Lint
+* Lint
 
    On the fly eslint
    #+BEGIN_SRC emacs-lisp
@@ -107,6 +64,49 @@
    (add-hook 'js-mode-hook
 	     (lambda ()
 	       (add-hook 'after-save-hook #'eslint-fix-file-and-revert)))
+   #+END_SRC
+
+* JavaScript
+
+** basic setup
+   [[https://ternjs.net/doc/manual.html#emacs][Tern, the "intelligent javascript tooling"]]
+   #+BEGIN_SRC emacs-lisp
+   (add-to-list 'load-path "/Users/ryandurling/.emacs.d/submodules/tern/emacs")
+   (autoload 'tern-mode "tern.el" nil t)
+   (add-hook 'js-mode-hook (lambda () (tern-mode t)))
+   (setq js-indent-level 2)
+   #+END_SRC
+
+** auto complete
+
+   #+BEGIN_SRC emacs-lisp
+   (use-package auto-complete
+     :ensure t
+     :config
+     (add-hook 'js-mode-hook (lambda () (auto-complete-mode t)))
+     (eval-after-load 'tern
+       '(progn
+	  (require 'tern-auto-complete)
+	  (tern-ac-setup))))
+   #+END_SRC
+
+** indium
+
+   #+BEGIN_SRC emacs-lisp
+   (use-package exec-path-from-shell
+     :ensure t
+     :custom
+     (exec-path-from-shell-check-startup-files nil)
+     :config
+     (push "HISTFILE" exec-path-from-shell-variables)
+     (exec-path-from-shell-initialize))
+
+   (add-hook 'after-init-hook 'global-company-mode)
+
+   (use-package indium
+     :ensure t
+     :config
+     (add-hook 'js-mode-hook #'indium-interaction-mode))
    #+END_SRC
 
 * TypeScript

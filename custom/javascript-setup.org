@@ -123,4 +123,8 @@
      (defun colorize-compilation-buffer ()
        (ansi-color-apply-on-region compilation-filter-start (point-max)))
      (add-hook 'compilation-filter-hook 'colorize-compilation-buffer))
+
+   (add-hook 'typescript-mode-hook
+	     (lambda ()
+	       (add-hook 'after-save-hook #'eslint-fix-file-and-revert)))
    #+END_SRC

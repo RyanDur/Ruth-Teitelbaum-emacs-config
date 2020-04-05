@@ -4,16 +4,18 @@
 
 ** [[https://ternjs.net/doc/manual.html#emacs][Tern, the "intelligent javascript tooling"]]
 
-   #+BEGIN_SRC emacs-lisp
-   (use-package add-node-modules-path :ensure t
-   #+END_SRC
-
 *** basic setup
     #+BEGIN_SRC emacs-lisp
     (add-to-list 'load-path "/Users/ryandurling/.emacs.d/submodules/tern/emacs")
     (autoload 'tern-mode "tern.el" nil t)
     (add-hook 'js-mode-hook (lambda () (tern-mode t)))
     #+END_SRC
+
+*** Always find the nearest node_modules
+
+   #+BEGIN_SRC emacs-lisp
+   (use-package add-node-modules-path :ensure t
+   #+END_SRC
 
 *** auto complete
 

@@ -46,14 +46,17 @@
     (message "eslint --fixing the file" (buffer-file-name))
     (call-process-shell-command (concat "npx eslint.js --fix " (buffer-file-name))))
 
-  (defun eslint-fix-file-and-revert ()
+  (defun tim-eslint-fix-file ()
     (interactive)
-    (eslint-fix-file)
+    (message "eslint --fix the file" (buffer-file-name))
+    (call-process-shell-command
+     (concat "yarn eslint --fix " (buffer-file-name))
+     nil "*Shell Command Output*" t)
     (revert-buffer t t))
 
   (add-hook 'js-mode-hook
 	    (lambda ()
-	      (add-hook 'after-save-hook #'eslint-fix-file-and-revert)))
+	      (add-hook 'after-save-hook #'tim-eslint-fix-file)))
   #+END_SRC
 
 * JavaScript

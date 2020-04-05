@@ -2,3 +2,6 @@
 	path = submodules/tern
 	url = https://github.com/ternjs/tern.git
 	ignore = dirty
+[submodule "submodules/auto-fix.el"]
+	path = submodules/auto-fix.el
+	url = https://github.com/tomoya/auto-fix.el.git

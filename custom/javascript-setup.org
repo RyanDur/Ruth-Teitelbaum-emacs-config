@@ -111,4 +111,11 @@
    #+BEGIN_SRC emacs-lisp
    (use-package typescript
      :ensure t)
+
+   (use-package ansi-color
+     :ensure t
+     :config
+     (defun colorize-compilation-buffer ()
+       (ansi-color-apply-on-region compilation-filter-start (point-max)))
+     (add-hook 'compilation-filter-hook 'colorize-compilation-buffer))
    #+END_SRC

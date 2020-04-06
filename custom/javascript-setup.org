@@ -57,7 +57,7 @@
 
   (add-hook 'typescript-mode-hook
 	    (lambda ()
-	      (add-hook 'after-save-hook #eslint-fmt-region-or-buffer)))
+	      (add-hook 'after-save-hook #'eslint-fmt-region-or-buffer)))
   #+END_SRC
 
 * JavaScript

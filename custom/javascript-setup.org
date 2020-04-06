@@ -43,6 +43,15 @@
 
   eslint --fix on save
   #+BEGIN_SRC emacs-lisp
+  (defun eslint-fix-file ()
+    (interactive)
+    (message "eslint --fixing the file" (buffer-file-name))
+    (shell-command (concat "node_modules/eslint/bin/eslint.js --fix " (buffer-file-name))))
+
+  (defun eslint-fix-file-and-revert ()
+    (interactive)
+    (eslint-fix-file)
+    (revert-buffer t t))
   #+END_SRC
 
 * JavaScript

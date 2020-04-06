@@ -43,21 +43,14 @@
 
   eslint --fix on save
   #+BEGIN_SRC emacs-lisp
-  (defun eslint-fmt-region-or-buffer ()
-    "use shell command to format buffer or region via eslint"
-    (interactive)
-    (if (region-active-p)
-	(shell-command-on-region "npx eslint --fix")
-      (mark-whole-buffer)
-      (shell-command-on-region "npx eslint --fix")))
+  (use-package eslint-fix
+    :ensure t
+    :config
+    (eval-after-load 'js-mode
+      '(add-hook 'js-mode-hook (lambda () (add-hook 'after-save-hook 'eslint-fix nil t))))
 
-  (add-hook 'js-mode-hook
-	    (lambda ()
-	      (add-hook 'after-save-hook #'eslint-fmt-region-or-buffer)))
-
-  (add-hook 'typescript-mode-hook
-	    (lambda ()
-	      (add-hook 'after-save-hook #'eslint-fmt-region-or-buffer)))
+    (eval-after-load 'typescript-mode
+      '(add-hook 'typescript-mode-hook (lambda () (add-hook 'after-save-hook 'eslint-fix nil t)))))
   #+END_SRC
 
 * JavaScript

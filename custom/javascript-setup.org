@@ -104,7 +104,8 @@
    support for [[https://github.com/emacs-typescript/typescript.el][typescript]]
    #+BEGIN_SRC emacs-lisp
    (use-package typescript-mode
-     :ensure t)
+     :ensure t
+:config (setq-default typescript-indent-level 2))
    #+END_SRC
 
    The error messages produced by tsc when its pretty flag is turned on

@@ -26,8 +26,7 @@
     :defer 1
     :ensure t
     :config
-    (add-hook 'js-mode-hook 'flycheck-mode)
-    (add-hook 'typescript-mode-hook 'flycheck-mode)
+    (global-flycheck-mode t)
     (setq-default flycheck-disabled-checkers
 		  (append flycheck-disabled-checkers
 			  '(javascript-jshint)))

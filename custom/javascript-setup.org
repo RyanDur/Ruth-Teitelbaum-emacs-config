@@ -61,7 +61,7 @@
     :ensure t
     :config (yas-global-mode 1))
   (use-package jasminejs-mode
-    :enusre t
+    :ensure t
     :diminish
     :after (yasnippet-mode)
     :hook ((js-mode-hook . jasminejs-mode)

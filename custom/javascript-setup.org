@@ -25,7 +25,7 @@
   (use-package flycheck
     :defer 1
     :ensure t
-    :init (global-flycheck-mode '(not org-mode))
+    :init (global-flycheck-mode t '(not org-mode))
     :config
     (setq-default flycheck-disabled-checkers
 		  (append flycheck-disabled-checkers

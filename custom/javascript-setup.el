@@ -9,7 +9,7 @@
 (use-package flycheck
   :defer 1
   :ensure t
-  :init (global-flycheck-mode '(not org-mode))
+  :init (global-flycheck-mode)
   :config
   (setq-default flycheck-disabled-checkers
 		(append flycheck-disabled-checkers
@@ -17,6 +17,9 @@
 
   (flycheck-add-mode 'javascript-eslint 'js-mode)
   (flycheck-add-mode 'javascript-eslint 'typescript-mode)
+
+  (add-hook 'org-mode-hook (lambda ()
+			     (flycheck-mode -1)))
 
   (setq-default flycheck-disabled-checkers
 		(append flycheck-disabled-checkers

@@ -35,7 +35,7 @@
     (flycheck-add-mode 'javascript-eslint 'typescript-mode)
 
     (add-hook 'org-mode-hook (lambda ()
-			       (global-flycheck-mode f)))
+			       (flycheck-mode -1)))
 
     (setq-default flycheck-disabled-checkers
 		  (append flycheck-disabled-checkers

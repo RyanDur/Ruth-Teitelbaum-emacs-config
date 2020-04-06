@@ -59,9 +59,10 @@
   #+BEGIN_SRC emacs-lisp
   (use-package yasnippet
     :ensure t
-    :after (yas-reload-all)
+    :config (yas-reload-all)
     :hook ((js-mode-hook . yas-minor-mode)
 	   (typescript-mode-hook . yas-minor-mode)))
+
   (use-package jasminejs-mode
     :ensure t
     :diminish

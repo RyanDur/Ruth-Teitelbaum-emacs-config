@@ -101,10 +101,17 @@
 
 ** basic setup
 
+   support for [[https://github.com/emacs-typescript/typescript.el][typescript]]
    #+BEGIN_SRC emacs-lisp
    (use-package typescript-mode
      :ensure t)
    (setq-default typescript-indent-level 2)
+   #+END_SRC
+
+   The error messages produced by tsc when its pretty flag is turned on
+   include ANSI color escapes, which by default compilation-mode does
+   not interpret. In order to get the escapes parsed, you can use:
+   #+BEGIN_SRC emacs-lisp
    (use-package ansi-color
      :ensure t
      :config

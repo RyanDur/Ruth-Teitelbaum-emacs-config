@@ -113,7 +113,7 @@
    #+BEGIN_SRC emacs-lisp
    (use-package typescript-mode
      :ensure t)
-
+   (setq-default typescript-indent-level 2)
    (use-package ansi-color
      :ensure t
      :config

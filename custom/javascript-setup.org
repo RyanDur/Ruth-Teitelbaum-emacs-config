@@ -112,3 +112,14 @@
        (ansi-color-apply-on-region compilation-filter-start (point-max)))
      (add-hook 'compilation-filter-hook 'colorize-compilation-buffer))
    #+END_SRC
+
+** tide
+
+   #+BEGIN_SRC emacs-lisp
+   (use-package tide
+     :ensure t
+     :after (typescript-mode company flycheck)
+     :hook ((typescript-mode . tide-setup)
+	    (typescript-mode . tide-hl-identifier-mode)
+	    (before-save . tide-format-before-save)))
+   #+END_SRC

@@ -9,8 +9,8 @@
 (use-package flycheck
   :defer 1
   :ensure t
+  :init (global-flycheck-mode '(not org-mode))
   :config
-  (global-flycheck-mode t)
   (setq-default flycheck-disabled-checkers
 		(append flycheck-disabled-checkers
 			'(javascript-jshint)))

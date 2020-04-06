@@ -57,11 +57,21 @@
 * testing
 
   #+BEGIN_SRC emacs-lisp
-  (use-package yasnippet
+  (use-package yasnippet                  ; Snippets
     :ensure t
-    :config (yas-reload-all)
-    :hook ((js-mode-hook . yas-minor-mode)
-	   (typescript-mode-hook . yas-minor-mode)))
+    :config
+    (validate-setq
+     yas-verbosity 1                      ; No need to be so verbose
+     yas-wrap-around-region t)
+
+    (with-eval-after-load 'yasnippet
+      (validate-setq yas-snippet-dirs '(yasnippet-snippets-dir)))
+
+    (yas-reload-all)
+    (yas-global-mode))
+
+  (use-package yasnippet-snippets         ; Collection of snippets
+    :ensure t)
 
   (use-package jasminejs-mode
     :ensure t

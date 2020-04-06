@@ -57,15 +57,16 @@
 * testing
 
   #+BEGIN_SRC emacs-lisp
+  (use-package yasnippet
+    :ensure t
+    :config (yas-global-mode 1))
   (use-package jasminejs-mode
     :enusre t
     :diminish
+    :after (yasnippet-mode)
     :hook ((js-mode-hook . jasminejs-mode)
 	   (typescript-mode-hook . jasminejs-mode)
-	   )
-    :config
-    (add-hook 'js-mode-hook (lambda () (jasminejs-mode)))
-    (add-hook 'typescript-mode-hook (lambda () (jasminejs-mode))))
+	   (jasminejs-mode-hook . jasminejs-add-snippets-to-yas-snippet-dirs)))
   #+END_SRC
 
 * JavaScript

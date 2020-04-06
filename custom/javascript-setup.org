@@ -65,7 +65,6 @@
 
   (use-package jasminejs-mode
     :ensure t
-    :diminish
     :after (yasnippet-mode)
     :hook ((js-mode-hook . jasminejs-mode)
 	   (typescript-mode-hook . jasminejs-mode)

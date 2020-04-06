@@ -54,6 +54,17 @@
       '(add-hook 'typescript-mode-hook (lambda () (add-hook 'after-save-hook 'eslint-fix nil t)))))
   #+END_SRC
 
+* testing
+
+  #+BEGIN_SRC emacs-lisp
+  (use-package jasminejs-mode
+    :enusre t
+    :diminish
+    :config
+    (add-hook 'js-mode-hook (lambda () (jasminejs-mode)))
+    (add-hook 'typescript-mode-hook (lambda () (jasminejs-mode))))
+  #+END_SRC
+
 * JavaScript
 
 ** basic setup

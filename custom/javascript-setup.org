@@ -113,7 +113,7 @@
      (add-hook 'compilation-filter-hook 'colorize-compilation-buffer))
    #+END_SRC
 
-** TypeScript Interactive Development Environment for Emacs
+** Interactive Development Environment
 
    [[https://github.com/ananthakumaran/tide][Tide]]
    #+BEGIN_SRC emacs-lisp

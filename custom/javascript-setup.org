@@ -26,7 +26,7 @@
     :defer 1
     :ensure t
     :config
-    ((global-flycheck-mode) '(not org-mode))
+    (global-flycheck-mode '(not org-mode))
     (setq-default flycheck-disabled-checkers
 		  (append flycheck-disabled-checkers
 			  '(javascript-jshint)))

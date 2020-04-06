@@ -37,7 +37,6 @@
     (setq-default flycheck-disabled-checkers
 		  (append flycheck-disabled-checkers
 			  '(json-jsonlist))))
-
   #+END_SRC
 
   eslint --fix on save

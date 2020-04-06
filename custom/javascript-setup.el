@@ -10,33 +10,26 @@
   :defer 1
   :ensure t
   :config
-  (add-hook 'js-mode-hook 'flycheck-mode)
-  (add-hook 'typescript-mode-hook 'flycheck-mode)
+  (global-flycheck-mode t)
   (setq-default flycheck-disabled-checkers
 		(append flycheck-disabled-checkers
 			'(javascript-jshint)))
 
   (flycheck-add-mode 'javascript-eslint 'js-mode)
+  (flycheck-add-mode 'javascript-eslint 'typescript-mode)
 
   (setq-default flycheck-disabled-checkers
 		(append flycheck-disabled-checkers
 			'(json-jsonlist))))
 
-(defun tim-eslint-fix-file ()
-  (interactive)
-  (message "eslint --fix the file" (buffer-file-name))
-  (call-process-shell-command
-   (concat "npx eslint --fix " (buffer-file-name))
-   nil "*Shell Command Output*" t)
-  (revert-buffer t t))
+(use-package eslint-fix
+  :ensure t
+  :config
+  (eval-after-load 'js-mode
+    '(add-hook 'js-mode-hook (lambda () (add-hook 'after-save-hook 'eslint-fix nil t))))
 
-(add-hook 'js-mode-hook
-	  (lambda ()
-	    (add-hook 'after-save-hook #'tim-eslint-fix-file)))
-
-(add-hook 'typescript-mode-hook
-	  (lambda ()
-	    (add-hook 'after-save-hook #'tim-eslint-fix-file)))
+  (eval-after-load 'typescript-mode
+    '(add-hook 'typescript-mode-hook (lambda () (add-hook 'after-save-hook 'eslint-fix nil t)))))
 
 (add-to-list 'load-path "/Users/ryandurling/.emacs.d/submodules/tern/emacs")
 (autoload 'tern-mode "tern.el" nil t)

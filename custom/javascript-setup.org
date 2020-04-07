@@ -67,7 +67,7 @@
     (yas-global-mode 1))
 
   (use-package jasminejs-mode
-    :after (js-mode typescript-mode yas-minor-mode)
+    :after (js-mode typescript-mode)
     :hook ((js-mode . jasminejs-mode)
 	   (typescript-mode . jasminejs-mode)
 	   (jasminejs-mode-hook . jasminejs-add-snippets-to-yas-snippet-dirs)))

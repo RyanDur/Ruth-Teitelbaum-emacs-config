@@ -59,7 +59,6 @@
   #+BEGIN_SRC emacs-lisp
   (use-package yasnippet
     :ensure t
-    :diminish yas-minor-mode
     :config
 
     (use-package yasnippet-snippets

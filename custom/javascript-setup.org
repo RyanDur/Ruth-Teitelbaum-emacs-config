@@ -156,5 +156,6 @@
   #+BEGIN_SRC emacs-lisp
   (use-package emmet-mode
     :ensure t
-    :hook (()))
+    :hook ((html-mode . emmet-mode)
+	   (css-mode . emmet-mode)))
   #+END_SRC

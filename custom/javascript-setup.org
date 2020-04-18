@@ -150,3 +150,5 @@
 	    (typescript-mode . tide-hl-identifier-mode)
 	    (before-save . tide-format-before-save)))
    #+END_SRC
+
+* HTML

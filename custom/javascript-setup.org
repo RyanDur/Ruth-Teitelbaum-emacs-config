@@ -156,6 +156,11 @@
   #+BEGIN_SRC emacs-lisp
   (use-package web-mode
     :ensure t
-    :hook ((html-mode . web-mode)
-	   (css-mode . web-mode)))
+    :defer t
+    :mode ("\\.html\\'"
+	   "\\.css\\'"))
+  (use-package emmet-mode
+    :ensure t
+    :hook ((html-mode . emmet-mode)
+	   (css-mode . emmet-mode)))
   #+END_SRC

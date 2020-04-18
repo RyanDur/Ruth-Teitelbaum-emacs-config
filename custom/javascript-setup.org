@@ -155,6 +155,6 @@
 
   #+BEGIN_SRC emacs-lisp
   (use-package emmet-mode
-  :ensure t
-)
+    :ensure t
+    :hook (()))
   #+END_SRC

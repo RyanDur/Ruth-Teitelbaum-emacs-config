@@ -159,8 +159,10 @@
     :defer t
     :mode ("\\.html\\'"
 	   "\\.css\\'"))
+
   (use-package emmet-mode
     :ensure t
     :hook ((html-mode . emmet-mode)
+	   (web-mode . emmet-mode)
 	   (css-mode . emmet-mode)))
   #+END_SRC

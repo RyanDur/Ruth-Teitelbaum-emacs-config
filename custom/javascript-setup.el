@@ -34,6 +34,21 @@
   (eval-after-load 'typescript-mode
     '(add-hook 'typescript-mode-hook (lambda () (add-hook 'after-save-hook 'eslint-fix nil t)))))
 
+(use-package yasnippet
+  :ensure t
+  :config
+
+  (use-package yasnippet-snippets
+    :ensure t)
+  (use-package mocha-snippets
+    :ensure t)
+  (yas-global-mode 1))
+
+(use-package jasminejs-mode
+  :hook ((js-mode . jasminejs-mode)
+	 (typescript-mode . jasminejs-mode)
+	 (jasminejs-mode-hook . jasminejs-add-snippets-to-yas-snippet-dirs)))
+
 (add-to-list 'load-path "/Users/ryandurling/.emacs.d/submodules/tern/emacs")
 (autoload 'tern-mode "tern.el" nil t)
 (add-hook 'js-mode-hook (lambda () (tern-mode t)))
@@ -64,11 +79,31 @@
   (add-hook 'js-mode-hook #'indium-interaction-mode))
 
 (use-package typescript-mode
-  :ensure t)
-(setq-default typescript-indent-level 2)
+  :ensure t
+  :config (setq-default typescript-indent-level 2))
+
 (use-package ansi-color
   :ensure t
   :config
   (defun colorize-compilation-buffer ()
     (ansi-color-apply-on-region compilation-filter-start (point-max)))
   (add-hook 'compilation-filter-hook 'colorize-compilation-buffer))
+
+(use-package tide
+  :ensure t
+  :after (typescript-mode company flycheck)
+  :hook ((typescript-mode . tide-setup)
+	 (typescript-mode . tide-hl-identifier-mode)
+	 (before-save . tide-format-before-save)))
+
+(use-package web-mode
+  :ensure t
+  :defer t
+  :mode ("\\.html\\'"
+	 "\\.css\\'"))
+
+(use-package emmet-mode
+  :ensure t
+  :hook ((html-mode . emmet-mode)
+	 (web-mode . emmet-mode)
+	 (css-mode . emmet-mode)))
